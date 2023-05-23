@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import menu from "@/logic/menu";
+import menu from "@/middleware/menu";
 import MenuLink from "./MenuLink.vue";
 defineProps({
   showMenu: {

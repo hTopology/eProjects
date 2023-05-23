@@ -4,3 +4,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#app {
+  overflow-x: hidden;
+}
+body {
+  background-color: #e6f0ed;
+  font-family: tajawal;
+}
+
+@font-face {
+  font-family: "tajawal";
+  src: url("./fonts/Tajawal-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "tajawal";
+  src: url("./fonts/Tajawal-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "tajawal";
+  src: url("./fonts/Tajawal-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}

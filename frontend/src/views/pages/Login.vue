@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Header from "@/views/components/header/Header.vue";
+import Header from "@/views/components/layouts/header/Header.vue";
 import LoginForm from "@/views/components/LoginForm.vue";
 import Footer from "@/views/components/footer/Footer.vue";
 </script>

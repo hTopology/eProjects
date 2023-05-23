@@ -9,7 +9,7 @@ module.exports = {
         secodry: "#94A3B8",
         border_color: "#94A3B8",
         tertiary: "#000000",
-        background: "#E6E6E6",
+        background: "#E6F0ED",
       },
     },
   },

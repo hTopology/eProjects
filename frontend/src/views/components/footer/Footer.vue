@@ -2,14 +2,14 @@
 import FooterBtn from "./FooterBtn.vue";
 </script>
 <template>
-  <footer class="w-full py-6 px-16 bg-white">
+  <footer class="p-4 md:py-4 md:px-16 w-full bg-white">
     <div class="flex justify-between items-center mb-6">
-      <div class="">
+      <div class="hidden md:block">
         <RouterLink to="/" class="flex">
           <img src="/image/lgLogo.svg" alt="logo image" />
         </RouterLink>
       </div>
-      <div class="flex gap-5">
+      <div class="md:w-auto md:gap-5 flex justify-between w-full">
         <FooterBtn qrImage="/image/appStoreQr.svg" icon="fa-brands fa-apple" />
         <FooterBtn
           btnStyle="borderd"
@@ -18,9 +18,11 @@ import FooterBtn from "./FooterBtn.vue";
         />
       </div>
     </div>
-    <div class="flex justify-between border-t border-secodry">
+    <div
+      class="text-xs md:text-sm md:flex-row flex-col text-center flex justify-between border-t border-secodry"
+    >
       <p class="">2023 © All rights reserved</p>
-      <p class="font-bold text-sm">
+      <p class="font-bold">
         General Directorate of Endowments Ministry of Endowments and Islamic
         Affairs State of Qatar
       </p>

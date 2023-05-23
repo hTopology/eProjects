@@ -9,11 +9,11 @@ const props = defineProps({
 });
 const style: any = {
   solid: {
-    btn: "bg-primary text-white",
+    btn: "bg-primary text-white border-primary",
     icon: "border-white",
   },
   borderd: {
-    btn: "border-2 border-primary text-primary",
+    btn: " border-primary text-primary",
     icon: "border-primary",
   },
 };
@@ -21,9 +21,14 @@ const style: any = {
 <template>
   {{}}
   <div class="flex flex-col items-center">
-    <img :src="qrImage" v-if="qrImage" alt="" />
+    <img
+      :src="qrImage"
+      class="hidden md:block w-16 h-16"
+      v-if="qrImage"
+      alt=""
+    />
     <button
-      class="outline-none rounded-3xl p-2 capitalize flex items-center gap-2"
+      class="text-xs md:text-sm p-1 font-bold outline-none rounded-3xl capitalize flex items-center gap-2 border-2"
       :class="style[props.btnStyle].btn"
     >
       <i

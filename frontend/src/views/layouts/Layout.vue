@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import Header from "@/views/components/layouts/header/Header.vue";
-import Menue from "@/views/components/layouts/menu/Menu.vue";
+import Navbar from "@/views/components/layouts/navbar/Navbar.vue";
+import Sidebar from "@/views/components/layouts/sidebar/Sidebar.vue";
 import LayoutContent from "@/views/components/layouts/LayoutContent.vue";
 
 const showMenu = ref(false);
@@ -11,7 +11,7 @@ function displayMenu() {
 </script>
 
 <template>
-  <Header :displayMenu="displayMenu" />
-  <Menue :showMenu="showMenu" />
+  <Navbar :displayMenu="displayMenu" />
+  <Sidebar :showMenu="showMenu" />
   <LayoutContent :showMenu="showMenu" />
 </template>

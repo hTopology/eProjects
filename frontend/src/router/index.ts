@@ -13,11 +13,11 @@ const router = createRouter({
       component: Login,
     },
     {
-      path: "",
+      path: "/",
       component: Layout,
       children: [
         {
-          path: "/",
+          path: "",
           name: "home",
           component: Home,
         },

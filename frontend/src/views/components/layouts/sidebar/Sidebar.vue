@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import menu from "@/middleware/menu";
-import MenuLink from "./MenuLink.vue";
+import SidebarLink from "./SidebarLink.vue";
 defineProps({
   showMenu: {
     type: Boolean,
@@ -16,7 +16,7 @@ defineProps({
   >
     <div class="h-full pb-4 overflow-y-auto bg-primary">
       <ul class="space-y-2 font-medium">
-        <MenuLink
+        <SidebarLink
           v-for="item in menu[1]"
           :key="item.linkName"
           :showMenu="showMenu"
@@ -24,7 +24,7 @@ defineProps({
           :icon="item.icon"
           :linkName="item.linkName"
         />
-        <!-- <MenuLink
+        <!-- <SidebarLink
           :showMenu="showMenu"
           to="/profile"
           icon="fa-regular fa-user"

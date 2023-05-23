@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import Title from "../components/Title.vue";
+import NotificationBox from "../components/NotificationBox.vue";
 </script>
 <template>
   <Title title="dashboard" />
-  <!-- <div class="h-screen"></div> -->
-  <!-- <pageTitle />
-  <div class="">
+  <div class="flex flex-wrap gap-6 mt-5">
     <NotificationBox />
-  </div> -->
+    <NotificationBox />
+    <NotificationBox />
+  </div>
 </template>

@@ -2,7 +2,7 @@
 import FooterBtn from "./FooterBtn.vue";
 </script>
 <template>
-  <footer class="p-4 md:py-4 md:px-16 w-full bg-white">
+  <footer class="p-4 md:py-4 md:px-16 w-full bg-white fixed bottom-0">
     <div class="flex justify-between items-center mb-6">
       <div class="hidden md:block">
         <RouterLink to="/" class="flex">
@@ -21,8 +21,8 @@ import FooterBtn from "./FooterBtn.vue";
     <div
       class="text-xs md:text-sm md:flex-row flex-col text-center flex justify-between border-t border-secodry"
     >
-      <p class="">2023 © All rights reserved</p>
-      <p class="font-bold">
+      <p class="font-bold">2023 © All rights reserved</p>
+      <p class="">
         General Directorate of Endowments Ministry of Endowments and Islamic
         Affairs State of Qatar
       </p>

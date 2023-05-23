@@ -4,9 +4,9 @@ import LoginForm from "@/views/components/login/LoginForm.vue";
 import Footer from "@/views/components/footer/Footer.vue";
 </script>
 <template>
-  <div class="h-screen flex items-center justify-between flex-col">
-    <Navbar />
+  <Navbar />
+  <div class="flex mt-24 items-start justify-center">
     <LoginForm />
-    <Footer />
   </div>
+  <Footer />
 </template>

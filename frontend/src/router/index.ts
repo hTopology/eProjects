@@ -16,6 +16,7 @@ const router = createRouter({
     {
       path: "/",
       component: Layout,
+      meta: { requiresAuth: true },
       children: [
         {
           path: "",
@@ -47,10 +48,7 @@ router.beforeEach((to, from, next) => {
   if (requiresAuth) {
     const roles = to.meta.roles;
     console.log(roles);
-    if (
-      !Object.keys(user.getUser()).length ||
-      !hasPermission(user.getUser().USER_TYPE_ID, roles)
-    ) {
+    if (!Object.keys(user.getUser()).length) {
       next("/login");
     } else {
       next();

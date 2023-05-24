@@ -1,10 +1,9 @@
-import { APISettings } from '@/config';
-import { apiFetch } from './api.service';
+import { APISettings } from "@/config";
+import { apiFetch } from "./api.service";
 
 async function isAuthenticatedUser(body: any) {
-  // APISettings.headers.set('Content-Type', 'application/json; charset=UTF-8');
   APISettings.body = JSON.stringify(body);
-  const data = await apiFetch('system/isAuthenticatedUser', APISettings);
+  const data = await apiFetch("system/isAuthenticatedUser", APISettings);
   return data.json();
 }
 

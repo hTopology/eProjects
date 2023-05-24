@@ -6,6 +6,7 @@ defineProps({
     required: true,
   },
 });
+const modelValue = defineModel();
 </script>
 <template>
   <div>
@@ -14,6 +15,7 @@ defineProps({
     }}</label>
     <input
       :id="labelName"
+      v-model="modelValue"
       :type="type"
       :placeholder="'Enter ' + labelName"
       class="border border-border_color outline-primary w-full p-3 rounded-md text-sm"

@@ -10,10 +10,13 @@ import FooterBtn from "./FooterBtn.vue";
         </RouterLink>
       </div>
       <div class="md:w-auto md:gap-5 flex justify-between w-full">
-        <FooterBtn qrImage="/image/appStoreQr.svg" icon="fa-brands fa-apple" />
+        <FooterBtn
+          qrImage="/eProjects/image/appStoreQr.svg"
+          icon="fa-brands fa-apple"
+        />
         <FooterBtn
           btnStyle="borderd"
-          qrImage="/image/googlePlayQr.svg"
+          qrImage="/eProjects/image/googlePlayQr.svg"
           icon="fa-brands fa-google-play"
         />
       </div>

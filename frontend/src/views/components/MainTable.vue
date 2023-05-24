@@ -39,10 +39,10 @@ function confirmDelte() {
       class="w-full text-sm text-left text-gray-500 border-spacing-y-2 border-separate"
     >
       <thead class="text-xs text-gray-700 uppercase bg-gray-50">
-        <tr class="capitalize">
+        <tr class="capitalize rounded-3xl">
           <th
             scope="col"
-            class="px-6 py-3"
+            class="px-6 py-4"
             v-for="(thead, index) in tableContent.tHeaders"
             :key="index"
           >
@@ -61,14 +61,14 @@ function confirmDelte() {
           v-for="(row, index) in tableContent.tData"
         >
           <td
-            class="px-6 py-4"
+            class="px-6 py-5"
             v-for="lable in tableContent.tColumns"
             :key="(lable as string)"
           >
             {{ row[lable as string] }}
           </td>
           <td
-            class="px-6 py-4"
+            class="px-6 py-5"
             :class="{ 'text-blue-600 cursor-pointer': lable.action }"
             v-for="lable in extendedColumns"
             @click="
@@ -83,20 +83,12 @@ function confirmDelte() {
             {{ lable.name }}
           </td>
 
-          <td class="px-6 py-4 text-end">
-            <button
-              @click="onOpenForm('update', index)"
-              type="button"
-              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2"
-            >
-              <i class="fa-regular fa-pen-to-square text-lg"></i>
+          <td class="px-6 py-5 text-end">
+            <button @click="onOpenForm('update', index)" type="button" class="">
+              <img src="/image/edit.svg" alt="" />
             </button>
-            <button
-              @click="openDeleteModal(index)"
-              type="button"
-              class="text-red-700 border-2 border-red-700 hover:bg-red-800 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2"
-            >
-              <i class="fa-regular fa-trash-can text-lg"></i>
+            <button @click="openDeleteModal(index)" type="button" class="px-6">
+              <img src="/image/delete.svg" alt="" />
             </button>
           </td>
         </tr>

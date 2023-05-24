@@ -34,12 +34,12 @@ const pageSize = +import.meta.env.VITE_PAGE_SIZE;
         :onOpenForm="onOpenForm"
         :onDelete="onDelete"
       />
-      <Pagination
+      <!-- <Pagination
         v-if="tableContent.tData?.[0].RowsCount > pageSize"
         :rowsCount="tableContent.tData?.[0].RowsCount"
         :onPageChanged="onRead"
         :filterFormData="filterFormData"
-      />
+      /> -->
     </div>
     <NoData v-else />
   </div>

@@ -6,7 +6,7 @@ const po = { link: "purchaseOrders", name: "purchase orders" };
 const dynamicItemInMenu = {
   1: [
     { to: "/", linkName: "home", icon: HomeIcon },
-    { to: "/test", linkName: "test", icon: HomeIcon },
+    { to: "/projects", linkName: "projects", icon: HomeIcon },
   ],
   2: [{ link: "request", name: "new request" }, { ...mRequest }],
   3: [{ ...mRequest }, { ...po }],

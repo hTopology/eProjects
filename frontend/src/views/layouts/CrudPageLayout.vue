@@ -54,12 +54,7 @@ let tableContent = computed(() =>
 );
 let pageMode = ref("create");
 onMounted(() => {
-  // onRead();
-  data.value = [
-    { UNIT_ID: 1, UNIT_AR: "1", UNIT_EN: "1", RowsCount: 3 },
-    { UNIT_ID: 1, UNIT_AR: "1", UNIT_EN: "1", RowsCount: 3 },
-    { UNIT_ID: 1, UNIT_AR: "1", UNIT_EN: "1", RowsCount: 3 },
-  ];
+  onRead();
 });
 
 function onOpenForm(mode: string, index: number = -1) {
@@ -173,9 +168,7 @@ provide("pageContent", {
 
 <template>
   <div>
-    <ICrudPageLayout :class="{ hidden: isFullPage }">
-      <template #pageTitle v-if="title">{{ props.entityId }}</template>
-    </ICrudPageLayout>
+    <ICrudPageLayout :class="{ hidden: isFullPage }" />
 
     <component
       :onSave="onSave"

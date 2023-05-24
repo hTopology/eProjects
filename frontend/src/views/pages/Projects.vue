@@ -1,17 +1,19 @@
 <script setup lang="ts">
+import { provide } from "vue";
 import CrudPageLayout from "../layouts/CrudPageLayout.vue";
 import ProectForm from "@/views/forms/ProectForm.vue";
 
-const tHeaders = ["id", "name ar", "name en"];
-const tColumns = ["UNIT_ID", "UNIT_AR", "UNIT_EN"];
-const required = ["UNIT_AR", "UNIT_EN"];
+const tHeaders = ["id", "name"];
+const tColumns = ["PROJECT_ID", "PROJECT"];
+const required = ["PROJECT"];
+provide("pageTitle", "projects");
 </script>
 
 <template>
   <CrudPageLayout
     :filterForm="ProectForm"
-    entityId="units"
-    :pKey="['UNIT_ID']"
+    entityId="projects"
+    :pKey="['PROJECT_ID']"
     :form="ProectForm"
     :tHeaders="tHeaders"
     :tColumns="tColumns"

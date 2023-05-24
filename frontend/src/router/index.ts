@@ -4,6 +4,7 @@ import Login from "@/views/pages/Login.vue";
 import Layout from "@/views/layouts/Layout.vue";
 import Home from "@/views/pages/Home.vue";
 import Test from "@/views/pages/Test.vue";
+import Projects from "@/views/pages/Projects.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -22,6 +23,11 @@ const router = createRouter({
           path: "",
           name: "home",
           component: Home,
+        },
+        {
+          path: "/projects",
+          name: "projects",
+          component: Projects,
         },
         {
           path: "/test",
@@ -48,7 +54,7 @@ router.beforeEach((to, from, next) => {
   if (requiresAuth) {
     const roles = to.meta.roles;
     console.log(roles);
-    if (!Object.keys(user.getUser()).length) {
+    if (!user.getUser().USER_ID) {
       next("/login");
     } else {
       next();

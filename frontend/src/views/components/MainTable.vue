@@ -63,14 +63,14 @@ function confirmDelte() {
           v-for="(row, index) in tableContent.tData"
         >
           <td
-            class="px-6 py-5"
+            class="px-6 py-3"
             v-for="lable in tableContent.tColumns"
             :key="(lable as string)"
           >
             {{ row[lable as string] }}
           </td>
           <td
-            class="px-6 py-5"
+            class="px-6 py-3"
             :class="{ 'text-blue-600 cursor-pointer': lable.action }"
             v-for="lable in extendedColumns"
             @click="
@@ -85,7 +85,7 @@ function confirmDelte() {
             {{ lable.name }}
           </td>
 
-          <td class="px-6 py-5 text-end">
+          <td class="px-6 py-3 text-end">
             <button @click="onOpenForm('update', index)" type="button" class="">
               <EditIcon />
             </button>

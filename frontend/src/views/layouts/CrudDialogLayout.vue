@@ -1,25 +1,27 @@
 <script setup lang="ts">
+import CloseIcon from "../components/icons/CloseIcon.vue";
+
 defineProps({
   onSave: {
     type: Function,
-    required: true
+    required: true,
   },
   onClose: {
     type: Function,
-    required: true
+    required: true,
   },
   title: {
     type: String,
-    required: true
+    required: true,
   },
   hasHeader: {
     type: Boolean,
-    default: true
+    default: true,
   },
   hasFooter: {
     type: Boolean,
-    default: true
-  }
+    default: true,
+  },
 });
 </script>
 
@@ -42,7 +44,7 @@ defineProps({
               class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
               @click="onClose()"
             >
-              <i class="fa-solid fa-xmark"></i>
+              <CloseIcon class="fill-primary w-4 h-4" />
             </button>
           </div>
 

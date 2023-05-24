@@ -29,7 +29,7 @@ defineProps({
     </RouterLink>
   </li>
 </template>
-<style>
+<style scoped>
 .router-link-active.router-link-exact-active {
   background-color: #e6f0ed;
   color: #006749;

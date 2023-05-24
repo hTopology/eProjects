@@ -1,32 +1,36 @@
 <script lang="ts" setup>
-import { computed, ref, watch } from 'vue';
+import { computed, ref, watch } from "vue";
 
 const props = defineProps({
   rowsCount: {
     type: Number,
-    required: true
+    required: true,
   },
   rowsPerPage: {
     type: Number,
-    default: +import.meta.env.VITE_PAGE_SIZE
+    default: +import.meta.env.VITE_PAGE_SIZE,
   },
   PerPages: {
     type: Number,
-    default: +import.meta.env.VITE_PAGES_COUNT
+    default: +import.meta.env.VITE_PAGES_COUNT,
   },
   onPageChanged: {
     type: Function,
-    required: true
+    required: true,
   },
   filterFormData: {
     type: Object,
-    required: true
-  }
+    required: true,
+  },
 });
 const currentPage = ref(1);
 
-const totalPages = computed(() => Math.ceil(props.rowsCount / props.rowsPerPage));
-const originalArray = computed(() => Array.from({ length: totalPages.value }, (_, i) => i + 1));
+const totalPages = computed(() =>
+  Math.ceil(props.rowsCount / props.rowsPerPage)
+);
+const originalArray = computed(() =>
+  Array.from({ length: totalPages.value }, (_, i) => i + 1)
+);
 const sheftCount = Math.ceil(totalPages.value / props.PerPages) - 1;
 let sheft = ref(0);
 const subarrays = computed(() => {
@@ -49,7 +53,10 @@ function prev() {
 }
 function next() {
   sheft.value < sheftCount ? sheft.value++ : null;
-  props.filterFormData.CurPage = Math.min(subarrays.value[sheft.value][0], totalPages.value);
+  props.filterFormData.CurPage = Math.min(
+    subarrays.value[sheft.value][0],
+    totalPages.value
+  );
   props.onPageChanged(props.filterFormData);
 }
 function last() {
@@ -75,7 +82,7 @@ function changePage(pageNumber: number) {
         :class="{ hidden: filterFormData.CurPage == 1 }"
         class="block cursor-pointer px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700"
       >
-        <i class="fa-solid fa-angles-left"></i>
+        <!-- <i class="fa-solid fa-angles-left"></i> -->>>
       </span>
     </li>
     <li>
@@ -84,7 +91,8 @@ function changePage(pageNumber: number) {
         :class="{ hidden: sheft == 0 }"
         class="block cursor-pointer px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
       >
-        <i class="fa-solid fa-angle-left"></i>
+        <!-- <i class="fa-solid fa-angle-left"></i> -->
+        >
       </span>
     </li>
     <li v-for="pageNumber in displayPages" :key="pageNumber">
@@ -93,7 +101,7 @@ function changePage(pageNumber: number) {
         class="cursor-pointer px-3 py-2 leading-tight text-gray-500 border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
         :class="[
           { 'bg-blue-200': pageNumber === filterFormData.CurPage },
-          { 'bg-white': pageNumber != filterFormData.CurPage }
+          { 'bg-white': pageNumber != filterFormData.CurPage },
         ]"
         >{{ pageNumber }}</span
       >
@@ -105,7 +113,8 @@ function changePage(pageNumber: number) {
         :class="{ hidden: sheft == sheftCount }"
         class="block cursor-pointer px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
       >
-        <i class="fa-solid fa-angle-right"></i>
+        <!-- <i class="fa-solid fa-angle-right"></i> -->
+        >
       </span>
     </li>
     <li>
@@ -114,7 +123,7 @@ function changePage(pageNumber: number) {
         :class="{ hidden: filterFormData.CurPage == totalPages }"
         class="block cursor-pointer px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700"
       >
-        <i class="fa-solid fa-angles-right"></i>
+        >>
       </span>
     </li>
   </ul>

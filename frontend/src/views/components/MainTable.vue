@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import DeleteModal from "@/views/components/DeleteModal.vue";
+import EditIcon from "./icons/EditIcon.vue";
+import DeleteIcon from "./icons/DeleteIcon.vue";
 const props = defineProps({
   tableContent: {
     type: Object,
@@ -85,10 +87,10 @@ function confirmDelte() {
 
           <td class="px-6 py-5 text-end">
             <button @click="onOpenForm('update', index)" type="button" class="">
-              <img src="/image/edit.svg" alt="" />
+              <EditIcon />
             </button>
             <button @click="openDeleteModal(index)" type="button" class="px-6">
-              <img src="/image/delete.svg" alt="" />
+              <DeleteIcon />
             </button>
           </td>
         </tr>

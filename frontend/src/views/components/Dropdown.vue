@@ -1,10 +1,14 @@
+<script setup lang="ts">
+import ArrowDownIcon from "./icons/ArrowDownIcon.vue";
+</script>
 <template>
   <button
     class="myBtn m-0 flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 outline-none"
     type="button"
   >
     All categories
-    <i class="fa-solid fa-chevron-down"></i>
+
+    <ArrowDownIcon />
   </button>
   <div
     class="myDrop z-10 hidden bg-white rounded-lg shadow absolute right-0 top-11 w-44"

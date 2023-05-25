@@ -40,38 +40,40 @@ function confirmDelte() {
     <table
       class="w-full text-sm text-left text-gray-500 border-spacing-y-2 border-separate"
     >
-      <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+      <thead class="text-xs text-gray-700 uppercase bg-white">
         <tr class="capitalize rounded-3xl">
           <th
-            scope="col"
             class="px-6 py-4"
-            v-for="(thead, index) in tableContent.tHeaders"
-            :key="index"
+            v-for="(thead, thIndex) in tableContent.tHeaders"
+            :class="{ 'rounded-tl-xl rounded-bl-xl': thIndex == 0 }"
+            :key="thIndex"
           >
             {{ thead }}
           </th>
-          <th scope="col" class="px-6 py-3 text-end">action</th>
+          <th class="px-6 py-3 text-end rounded-tr-xl rounded-br-xl">action</th>
         </tr>
       </thead>
       <tbody>
-        <tr
-          class="rounded-lg"
-          :class="[
-            { 'bg-gray-200': index % 2 != 0 },
-            { 'bg-white': index % 2 == 0 },
-          ]"
-          v-for="(row, index) in tableContent.tData"
-        >
+        <tr class="rounded-lg" v-for="(row, index) in tableContent.tData">
           <td
-            class="px-6 py-3"
-            v-for="lable in tableContent.tColumns"
+            v-for="(lable, tedIndex) in tableContent.tColumns"
             :key="(lable as string)"
+            class="px-6 py-3"
+            :class="[
+              { 'bg-tableRow': index % 2 === 0 },
+              { 'bg-white': index % 2 != 0 },
+              { 'rounded-tl-xl rounded-bl-xl': tedIndex == 0 },
+            ]"
           >
             {{ row[lable as string] }}
           </td>
           <td
             class="px-6 py-3"
-            :class="{ 'text-blue-600 cursor-pointer': lable.action }"
+            :class="[
+              { 'text-blue-600 cursor-pointer': lable.action },
+              { 'bg-tableRow': index % 2 === 0 },
+              { 'bg-white': index % 2 != 0 },
+            ]"
             v-for="lable in extendedColumns"
             @click="
               lable.action &&
@@ -85,13 +87,25 @@ function confirmDelte() {
             {{ lable.name }}
           </td>
 
-          <td class="px-6 py-3 text-end">
-            <button @click="onOpenForm('update', index)" type="button" class="">
-              <EditIcon />
-            </button>
-            <button @click="openDeleteModal(index)" type="button" class="px-6">
-              <DeleteIcon />
-            </button>
+          <td
+            class="text-end rounded-tr-xl rounded-br-xl px-6 py-3"
+            :class="[
+              { 'bg-tableRow': index % 2 === 0 },
+              { 'bg-white': index % 2 != 0 },
+            ]"
+          >
+            <div class="flex gap-6">
+              <button
+                @click="onOpenForm('update', index)"
+                type="button"
+                class=""
+              >
+                <EditIcon />
+              </button>
+              <button @click="openDeleteModal(index)" type="button">
+                <DeleteIcon />
+              </button>
+            </div>
           </td>
         </tr>
       </tbody>

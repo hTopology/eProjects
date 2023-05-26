@@ -27,7 +27,7 @@ function logout() {
   >
     <div class="flex flex-col justify-between py-8 h-full">
       <div class="pb-4 overflow-y-auto bg-primary">
-        <ul class="space-y-4 font-medium">
+        <ul class="space-y-2 font-medium">
           <SidebarLink
             v-for="item in menu[1]"
             :key="item.linkName"

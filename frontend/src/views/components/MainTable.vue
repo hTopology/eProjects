@@ -94,7 +94,7 @@ function confirmDelte() {
               { 'bg-white': index % 2 != 0 },
             ]"
           >
-            <div class="flex gap-6">
+            <div class="flex justify-end gap-6">
               <button
                 @click="onOpenForm('update', index)"
                 type="button"

@@ -1,0 +1,9 @@
+@protocol = http
+@hostname = localhost
+@port = :3000
+@host = {{hostname}}{{port}}
+
+@contentType = application/json
+
+### Delete categories
+DELETE {{protocol}}://{{host}}/eProjects/api/delete/projects/?PROJECT_ID=5

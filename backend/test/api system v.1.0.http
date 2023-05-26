@@ -1,0 +1,14 @@
+@protocol = http
+@hostname = localhost
+@port = :3000
+@host = {{hostname}}{{port}}
+@contentType = application/json
+
+### User Authentication
+POST {{protocol}}://{{host}}/eProjects/api/system/isAuthenticatedUser
+Content-Type:{{contentType}}
+
+{
+    "LOGIN_NAME": "السعدي",
+    "LOGIN_PASSWORD": "123456"  
+}

@@ -1,0 +1,13 @@
+@protocol = http
+@hostname = localhost
+@port = :3000
+@host = {{hostname}}{{port}}
+@contentType = application/json
+
+### Create projects
+POST {{protocol}}://{{host}}/eProjects/api/create/projects
+Content-Type:{{contentType}}
+
+{
+    "PROJECT": "test test test"
+}

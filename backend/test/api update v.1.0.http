@@ -1,0 +1,14 @@
+@protocol = http
+@hostname = localhost
+@port = :3000
+@host = {{hostname}}{{port}}
+@contentType = application/json
+
+### Update categories
+PUT {{protocol}}://{{host}}/eProjects/api/update/projects
+Content-Type:{{contentType}}
+
+{
+    "PROJECT_ID":4,
+    "PROJECT_ID":"تجربة التحديث"  
+}

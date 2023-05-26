@@ -11,6 +11,7 @@ const props = defineProps({
     type: Object,
     required: true,
   },
+  btnText: String,
 });
 const style: any = {
   solid: {
@@ -38,7 +39,7 @@ const style: any = {
       <div class="border-r-2 px-2">
         <component :is="icon" :class="style[props.btnStyle].icon" />
       </div>
-      app store
+      {{ btnText }}
       <div class="border-l-2 px-2">
         <DownloadIcon :class="style[props.btnStyle].icon" />
       </div>

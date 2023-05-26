@@ -13,10 +13,12 @@ import GooglePlayIcon from "../icons/GooglePlayIcon.vue";
       </div>
       <div class="md:w-auto md:gap-5 flex justify-between w-full">
         <FooterBtn
+          btnText="app store"
           qrImage="/eProjects/image/appStoreQr.svg"
           :icon="AppleIcon"
         />
         <FooterBtn
+          btnText="google play"
           btnStyle="borderd"
           qrImage="/eProjects/image/googlePlayQr.svg"
           :icon="GooglePlayIcon"

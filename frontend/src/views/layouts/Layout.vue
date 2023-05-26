@@ -4,14 +4,21 @@ import Navbar from "@/views/components/layouts/navbar/Navbar.vue";
 import Sidebar from "@/views/components/layouts/sidebar/Sidebar.vue";
 import LayoutContent from "@/views/components/layouts/LayoutContent.vue";
 
-const showMenu = ref(false);
+const showMenu = ref(true);
 function displayMenu() {
   showMenu.value = !showMenu.value;
 }
 </script>
 
 <template>
-  <Navbar :displayMenu="displayMenu" />
-  <Sidebar :showMenu="showMenu" />
-  <LayoutContent :showMenu="showMenu" />
+  <div class="flex flex-col">
+    <Navbar :displayMenu="displayMenu" @toggleMenu="displayMenu" />
+    <div class="flex" style="height: calc(100vh - 67px)">
+      <Sidebar :showMenu="showMenu" />
+      <LayoutContent
+        :showMenu="showMenu"
+        class="flex-auto overflow-y-scroll h-full"
+      />
+    </div>
+  </div>
 </template>

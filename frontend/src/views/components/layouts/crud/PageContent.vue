@@ -21,27 +21,29 @@ const pageSize = +import.meta.env.VITE_PAGE_SIZE;
 </script>
 
 <template>
-  <Filter
-    :onRead="onRead"
-    :filterForm="filterForm"
-    :clearFilter="clearFilter"
-    :filterFormData="filterFormData"
-  />
-  <div :class="{ hidden: isLoading }">
-    <div v-if="tableContent.tData?.length">
-      <MainTable
-        :tableContent="tableContent"
-        :onOpenForm="onOpenForm"
-        :onDelete="onDelete"
-      />
-      <!-- <Pagination
-        v-if="tableContent.tData?.[0].RowsCount > pageSize"
-        :rowsCount="tableContent.tData?.[0].RowsCount"
-        :onPageChanged="onRead"
-        :filterFormData="filterFormData"
-      /> -->
+  <div class="px-10">
+    <Filter
+      :onRead="onRead"
+      :filterForm="filterForm"
+      :clearFilter="clearFilter"
+      :filterFormData="filterFormData"
+    />
+    <div :class="{ hidden: isLoading }">
+      <div v-if="tableContent.tData?.length">
+        <MainTable
+          :tableContent="tableContent"
+          :onOpenForm="onOpenForm"
+          :onDelete="onDelete"
+        />
+        <Pagination
+          v-if="tableContent.tData?.[0].RowsCount > pageSize"
+          :rowsCount="tableContent.tData?.[0].RowsCount"
+          :onPageChanged="onRead"
+          :filterFormData="filterFormData"
+        />
+      </div>
+      <NoData v-else />
     </div>
-    <NoData v-else />
+    <Sppiner v-if="isLoading" />
   </div>
-  <Sppiner v-if="isLoading" />
 </template>

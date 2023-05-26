@@ -10,7 +10,7 @@ const modelValue = defineModel();
     :class="[{ block: !modelValue }, { hidden: modelValue }]"
   ></div>
   <aside
-    class="fixed top-0 right-0 z-50 h-screen transition-all bg-primary w-60 px-4 py-6"
+    class="fixed md:block top-16 right-0 z-40 h-screen transition-all bg-primary w-64"
     :class="[
       { 'translate-x-0': !modelValue },
       { 'translate-x-full': modelValue },

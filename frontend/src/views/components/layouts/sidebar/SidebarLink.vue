@@ -22,10 +22,10 @@ defineProps({
   <li>
     <RouterLink
       :to="to"
-      class="flex items-center p-2 text-white text-lg font-bold capitalize"
+      class="flex items-center gap-2 py-2 px-4 text-white text-lg font-bold capitalize"
     >
       <component :is="icon" class="fill-white" />
-      <span class="ml-3" v-if="!showMenu">{{ linkName }}</span>
+      <span v-if="showMenu">{{ linkName }}</span>
     </RouterLink>
   </li>
 </template>

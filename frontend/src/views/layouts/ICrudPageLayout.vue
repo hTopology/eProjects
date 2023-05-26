@@ -3,9 +3,7 @@ import PageHeader from "../components/layouts/crud/PageHeader.vue";
 import PageContent from "../components/layouts/crud/PageContent.vue";
 </script>
 <template>
-  <div class="p-4">
-    <PageHeader />
+  <PageHeader />
 
-    <PageContent />
-  </div>
+  <PageContent />
 </template>

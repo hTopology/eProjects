@@ -10,7 +10,6 @@ const searchBy = ref(baseSearchOptions[1].value);
 const searchValue = ref();
 function oneInputFilter() {
   filterFormData.value.CurPage = 1;
-  filterFormData.value[searchBy.value] = searchValue.value;
   onRead();
 }
 watch(searchBy, () => {
@@ -29,7 +28,7 @@ watch(searchBy, () => {
         <input
           type="text"
           @input="oneInputFilter"
-          v-model="searchValue"
+          v-model="filterFormData[searchBy]"
           class="text-gray-900 text-sm block w-full pl-10 p-2.5 outline-none bg-transparent"
           placeholder="Search"
         />

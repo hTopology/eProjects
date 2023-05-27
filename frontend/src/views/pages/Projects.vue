@@ -8,6 +8,16 @@ const tHeaders = ["id", "name"];
 const tColumns = ["PROJECT_ID", "PROJECT"];
 const required = ["PROJECT"];
 provide("pageTitle", "projects");
+provide("baseSearch", [
+  {
+    key: "id",
+    value: "PROJECT_ID",
+  },
+  {
+    key: "project",
+    value: "PROJECT",
+  },
+]);
 </script>
 
 <template>

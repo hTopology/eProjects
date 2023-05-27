@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import CrudPageLayout from "../layouts/CrudPageLayout.vue";
-import ProectForm from "@/views/forms/ProectForm.vue";
+import ProjectForm from "@/views/forms/ProjectForm.vue";
 
 const tHeaders = ["id", "name ar", "name en"];
 const tColumns = ["UNIT_ID", "UNIT_AR", "UNIT_EN"];
@@ -9,10 +9,10 @@ const required = ["UNIT_AR", "UNIT_EN"];
 
 <template>
   <CrudPageLayout
-    :filterForm="ProectForm"
+    :filterForm="ProjectForm"
     entityId="units"
     :pKey="['UNIT_ID']"
-    :form="ProectForm"
+    :form="ProjectForm"
     :tHeaders="tHeaders"
     :tColumns="tColumns"
     formPageType="dialog"

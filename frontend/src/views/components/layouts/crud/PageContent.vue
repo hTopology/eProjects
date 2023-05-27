@@ -3,8 +3,10 @@ import MainTable from "@/views/components/MainTable.vue";
 import NoData from "@/views/components/NoData.vue";
 import Pagination from "@/views/components/Pagination.vue";
 import Filter from "../../Filter.vue";
+import FilterMenu from "../../FilterMenu.vue";
 import { inject } from "vue";
 import Sppiner from "@/views/components/Sppiner.vue";
+import { computed } from "vue";
 
 const {
   filterFormData,
@@ -15,14 +17,21 @@ const {
   clearFilter,
   onOpenForm,
   isLoading,
+  filterFormType,
 }: any = inject("pageContent");
+
+const dynamicFilterComponent = computed(() =>
+  filterFormType.value == "filterMenu" ? FilterMenu : Filter
+);
 
 const pageSize = +import.meta.env.VITE_PAGE_SIZE;
 </script>
 
 <template>
   <div class="px-10">
-    <Filter
+    <component
+      v-if="filterForm"
+      :is="dynamicFilterComponent"
       :onRead="onRead"
       :filterForm="filterForm"
       :clearFilter="clearFilter"

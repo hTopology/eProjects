@@ -1,31 +1,44 @@
 <script setup lang="ts">
 import CloseIcon from "./icons/CloseIcon.vue";
-import LoginInput from "./login/LoginInput.vue";
-const modelValue = defineModel();
+const { filterFormData, onRead } = defineProps({
+  filterFormData: {
+    type: Object,
+    required: true,
+  },
+  filterForm: {
+    type: Object,
+    required: true,
+  },
+  onRead: {
+    type: Function,
+    required: true,
+  },
+  clearFilter: Function,
+});
 </script>
 <template>
-  <div
-    @click="modelValue = true"
-    class="fixed w-full h-full top-0 left-0 z-50"
-    :class="[{ block: !modelValue }, { hidden: modelValue }]"
-  ></div>
   <aside
-    class="fixed md:block top-16 right-0 z-40 h-screen transition-all bg-primary w-64"
-    :class="[
-      { 'translate-x-0': !modelValue },
-      { 'translate-x-full': modelValue },
-    ]"
+    class="fixed md:block top-16 right-0 z-40 h-screen transition-all bg-primary w-60 px-4 py-6"
   >
-    <div class="h-full pb-4 overflow-y-auto bg-primary">
-      <div class="flex items-center justify-between mb-6">
-        <h4 class="font-bold text-white">Advanced Filter</h4>
-        <button class="p-2" @click="modelValue = true">
-          <CloseIcon class="fill-white" />
+    <div class="flex flex-col justify-between py-8 h-full">
+      <div class="pb-4 overflow-y-auto bg-primary">
+        <div class="flex items-center justify-between mb-6">
+          <h4 class="font-bold text-white">Advanced Filter</h4>
+          <button class="p-2" @click="clearFilter && clearFilter()">
+            <CloseIcon class="fill-white" />
+          </button>
+        </div>
+        <form>
+          <component :is="filterForm" :filterFormData="filterFormData" />
+        </form>
+      </div>
+      <div class="">
+        <button
+          class="text-xs md:text-sm p-1 font-bold outline-none rounded-3xl capitalize flex items-center gap-2 border-2 border-primary"
+        >
+          filter
         </button>
       </div>
-      <form>
-        <LoginInput class="text-white" type="text" labelName="name" />
-      </form>
     </div>
   </aside>
 </template>

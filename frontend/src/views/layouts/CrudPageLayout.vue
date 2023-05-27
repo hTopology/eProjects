@@ -4,6 +4,7 @@ import ICrudPageLayout from "../layouts/ICrudPageLayout.vue";
 import CrudDialogLayout from "@/views/layouts/CrudDialogLayout.vue";
 import CurdCurrentLayout from "@/views/layouts/CurdCurrentLayout.vue";
 import { post, put, remove } from "@/services/crud.service";
+import { useVuelidate } from "@vuelidate/core";
 
 const props = defineProps({
   title: String,
@@ -34,6 +35,7 @@ const props = defineProps({
   filterForm: {
     type: Object,
   },
+  filterFormType: String,
 });
 const formData = ref({}) as any;
 const data = ref();
@@ -44,10 +46,12 @@ const isLoading = ref(false);
 const curPage = ref(1);
 const isFullPage = ref(false);
 const filterForm = ref();
+const rules = ref({});
 const filterFormData: any = ref({
   CurPage: +import.meta.env.VITE_CUR_PAGE,
   PageSize: +import.meta.env.VITE_PAGE_SIZE,
 });
+const filterFormType = computed(() => props.filterFormType);
 const isCreateMode = computed(() => pageMode.value === "create");
 let tableContent = computed(() =>
   Object.assign({ tHeaders }, { tColumns }, { tData: data.value })
@@ -80,8 +84,12 @@ function setFormData(index: number) {
         props.extendedData
       );
 }
-
+const v$ = useVuelidate(rules, formData);
 async function onSave() {
+  v$.value.$validate();
+  if (v$.value.$error) {
+    return;
+  }
   isCreateMode.value ? await onCreate() : await onUpdate();
   restVariablesToDefaultValue();
 }
@@ -152,6 +160,7 @@ provide("pageHeader", {
   filterFormData,
   restFilterFormData,
   clearFilter,
+  filterForm,
 });
 provide("pageContent", {
   filterFormData,
@@ -163,6 +172,7 @@ provide("pageContent", {
   onOpenForm,
   isLoading,
   curPage,
+  filterFormType,
 });
 </script>
 
@@ -177,7 +187,7 @@ provide("pageContent", {
       :onClose="restVariablesToDefaultValue"
     >
       <template #formContent
-        ><component :is="form" :formData="formData"
+        ><component :is="form" :formData="formData" v-model="rules" :v$="v$"
       /></template>
     </component>
   </div>

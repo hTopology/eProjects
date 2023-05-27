@@ -1,20 +1,20 @@
 <script setup lang="ts">
-import CurdCurrentLayout from '@/views/layouts/CurdCurrentLayout.vue';
-import { inject } from 'vue';
+import CurdCurrentLayout from "@/views/layouts/CurdCurrentLayout.vue";
+import { inject } from "vue";
 const { filterFormData, onRead } = defineProps({
   filterFormData: {
     type: Object,
-    required: true
+    required: true,
   },
   filterForm: {
-    type: Object
+    type: Object,
   },
   onRead: {
     type: Function,
-    required: true
-  }
+    required: true,
+  },
 });
-const { curPage }: any = inject('pageContent');
+const { curPage }: any = inject("pageContent");
 function filter() {
   curPage.value = filterFormData.CurPage;
   filterFormData.CurPage = 1;

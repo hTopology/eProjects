@@ -5,6 +5,7 @@ import Layout from "@/views/layouts/Layout.vue";
 import Home from "@/views/pages/Home.vue";
 import Test from "@/views/pages/Test.vue";
 import Projects from "@/views/pages/Projects.vue";
+import MembersTypes from "@/views/pages/MembersTypes.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,7 +33,7 @@ const router = createRouter({
         {
           path: "/membersTypes",
           name: "membersTypes",
-          component: Projects,
+          component: MembersTypes,
         },
         {
           path: "/test",

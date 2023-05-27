@@ -1,10 +1,25 @@
 <script setup lang="ts">
 import Dropdown from "@/views/components/Dropdown.vue";
 import SearchIcon from "@/views/components/icons/SearchIcon.vue";
+import { watch } from "vue";
+import { ref } from "vue";
+import { inject } from "vue";
+const { filterFormData, onRead, clearFilter }: any = inject("pageHeader");
+const baseSearchOptions: any = inject("baseSearch");
+const searchBy = ref(baseSearchOptions[1].value);
+const searchValue = ref();
+function oneInputFilter() {
+  filterFormData.value.CurPage = 1;
+  filterFormData.value[searchBy.value] = searchValue.value;
+  onRead();
+}
+watch(searchBy, () => {
+  clearFilter();
+});
 </script>
 <template>
   <div class="border-x border-x-third px-4">
-    <div class="flex relative border border-third rounded-3xl">
+    <div class="flex items-center relative border border-third rounded-3xl">
       <div class="relative w-full">
         <div
           class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
@@ -13,13 +28,13 @@ import SearchIcon from "@/views/components/icons/SearchIcon.vue";
         </div>
         <input
           type="text"
-          id="simple-search"
+          @input="oneInputFilter"
+          v-model="searchValue"
           class="text-gray-900 text-sm block w-full pl-10 p-2.5 outline-none bg-transparent"
           placeholder="Search"
-          required
         />
       </div>
-      <Dropdown />
+      <Dropdown v-model="searchBy" :options="baseSearchOptions" />
     </div>
   </div>
 </template>

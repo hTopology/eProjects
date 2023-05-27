@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import MainInput from "../components/MainInput.vue";
 import { required, helpers, email } from "@vuelidate/validators";
-import { ref, computed } from "vue";
 
 const props = defineProps({
   formData: {

@@ -1,21 +1,31 @@
 <script setup lang="ts">
 import { provide } from "vue";
 import CrudPageLayout from "../layouts/CrudPageLayout.vue";
-import ProjectForm from "@/views/forms/ProjectForm.vue";
-import ProjectFilterForm from "@/views/forms/ProjectFilterForm.vue";
+import MemberTypeForm from "@/views/forms/MemberTypeForm.vue";
+import MeberTypeFilterForm from "@/views/forms/MeberTypeFilterForm.vue";
 
 const tHeaders = ["id", "name"];
 const tColumns = ["MEMBER_TYPE_ID", "MEMBER_TYPE"];
 provide("pageTitle", "members types");
+provide("baseSearch", [
+  {
+    key: "id",
+    value: "MEMBER_TYPE_ID",
+  },
+  {
+    key: "member type",
+    value: "MEMBER_TYPE",
+  },
+]);
 </script>
 
 <template>
   <CrudPageLayout
-    :filterForm="ProjectFilterForm"
+    :filterForm="MeberTypeFilterForm"
     filterFormType="menu"
     entityId="members_types"
     :pKey="['MEMBER_TYPE_ID']"
-    :form="ProjectForm"
+    :form="MemberTypeForm"
     :tHeaders="tHeaders"
     :tColumns="tColumns"
     formPageType="dialog"

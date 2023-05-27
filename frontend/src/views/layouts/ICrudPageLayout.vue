@@ -4,6 +4,5 @@ import PageContent from "../components/layouts/crud/PageContent.vue";
 </script>
 <template>
   <PageHeader />
-
   <PageContent />
 </template>

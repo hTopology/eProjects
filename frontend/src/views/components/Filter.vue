@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import CurdCurrentLayout from "@/views/layouts/CurdCurrentLayout.vue";
-import { inject } from "vue";
 const { filterFormData, onRead } = defineProps({
   filterFormData: {
     type: Object,
@@ -13,21 +12,23 @@ const { filterFormData, onRead } = defineProps({
     type: Function,
     required: true,
   },
+  onFilter: Function,
+  toggleFilterForm: Function,
 });
-const { curPage }: any = inject("pageContent");
-function filter() {
-  curPage.value = filterFormData.CurPage;
-  filterFormData.CurPage = 1;
-  onRead(filterFormData);
-}
+// function filter() {
+//   curPage.value = filterFormData.CurPage;
+//   filterFormData.CurPage = 1;
+//   onRead(filterFormData);
+// }
 </script>
 <template>
   <CurdCurrentLayout
-    confirmBtn="filter"
-    :isShowCancle="false"
-    :onSave="filter"
+    confirmBtn="apply"
+    cancleBtn="close"
+    :onSave="onFilter"
     :showSaveBtn="true"
     v-if="filterForm"
+    :onClose="toggleFilterForm"
   >
     <template #formContent
       ><component :is="filterForm" :filterFormData="filterFormData"

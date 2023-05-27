@@ -137,7 +137,7 @@ function onClose() {
   dynamicComponent.value = null;
 }
 
-function openFilterForm() {
+function toggleFilterForm() {
   filterForm.value = filterForm.value ? null : props.filterForm;
 }
 function clearFilter() {
@@ -154,7 +154,7 @@ function restFilterFormData() {
 }
 provide("pageHeader", {
   onOpenForm,
-  openFilterForm,
+  toggleFilterForm,
   tableContent,
   onRead,
   filterFormData,
@@ -173,6 +173,7 @@ provide("pageContent", {
   isLoading,
   curPage,
   filterFormType,
+  toggleFilterForm,
 });
 </script>
 

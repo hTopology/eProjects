@@ -14,17 +14,23 @@ const {
   onRead,
   onDelete,
   filterForm,
-  clearFilter,
   onOpenForm,
   isLoading,
   filterFormType,
+  curPage,
+  toggleFilterForm,
 }: any = inject("pageContent");
 
 const dynamicFilterComponent = computed(() =>
-  filterFormType.value == "filterMenu" ? FilterMenu : Filter
+  filterFormType.value == "menu" ? FilterMenu : Filter
 );
 
 const pageSize = +import.meta.env.VITE_PAGE_SIZE;
+function onFilter() {
+  curPage.value = filterFormData.CurPage;
+  filterFormData.CurPage = 1;
+  onRead(filterFormData);
+}
 </script>
 
 <template>
@@ -34,8 +40,9 @@ const pageSize = +import.meta.env.VITE_PAGE_SIZE;
       :is="dynamicFilterComponent"
       :onRead="onRead"
       :filterForm="filterForm"
-      :clearFilter="clearFilter"
+      :toggleFilterForm="toggleFilterForm"
       :filterFormData="filterFormData"
+      :onFilter="onFilter"
     />
     <div :class="{ hidden: isLoading }">
       <div v-if="tableContent.tData?.length">

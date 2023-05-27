@@ -13,7 +13,7 @@ function displayMenu() {
 <template>
   <div class="flex flex-col">
     <Navbar :displayMenu="displayMenu" @toggleMenu="displayMenu" />
-    <div class="flex" style="height: calc(100vh - 67px)">
+    <div class="flex relative" style="height: calc(100vh - 67px)">
       <Sidebar :showMenu="showMenu" />
       <LayoutContent
         :showMenu="showMenu"

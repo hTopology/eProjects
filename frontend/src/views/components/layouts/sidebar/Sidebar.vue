@@ -21,7 +21,7 @@ function logout() {
 <template>
   <aside
     :class="[
-      { 'w-56': showMenu },
+      { 'w-60': showMenu },
       { 'w-0 md:w-auto overflow-hidden': !showMenu },
     ]"
     class="md:block transition-all bg-white"

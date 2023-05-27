@@ -10,7 +10,6 @@
       fill-rule="evenodd"
       clip-rule="evenodd"
       d="M5 5.99999L0 0.999988L0.7 0.299988L5 4.59999L9.3 0.299988L10 0.999988L5 5.99999Z"
-      fill="#94A3B8"
     />
   </svg>
 </template>

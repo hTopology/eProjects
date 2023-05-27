@@ -4,6 +4,7 @@ import SidebarLink from "./SidebarLink.vue";
 import { useUserStore } from "@/stores/user";
 import router from "@/router";
 import LogoutIcon from "../../icons/LogoutIcon.vue";
+import UserInfo from "./UserInfo.vue";
 defineProps({
   showMenu: {
     type: Boolean,
@@ -23,26 +24,27 @@ function logout() {
       { 'w-56': showMenu },
       { 'w-0 md:w-auto overflow-hidden': !showMenu },
     ]"
-    class="md:block transition-all bg-primary"
+    class="md:block transition-all bg-white"
   >
-    <div class="flex flex-col justify-between py-8 h-full">
-      <div class="pb-4 overflow-y-auto bg-primary">
-        <ul class="space-y-2 font-medium">
-          <SidebarLink
-            v-for="item in menu[1]"
-            :key="item.linkName"
-            :showMenu="showMenu"
-            :to="item.to"
-            :icon="item.icon"
-            :linkName="item.linkName"
-          />
-        </ul>
-      </div>
+    <div class="flex flex-col pb-8 h-full">
+      <UserInfo :showMenu="showMenu" />
+      <ul class="space-y-2 p-4 font-medium h-full overflow-y-auto">
+        <SidebarLink
+          v-for="item in menu[1]"
+          :key="item.linkName"
+          :showMenu="showMenu"
+          :to="item.to"
+          :icon="item.icon"
+          :linkName="item.linkName"
+        />
+      </ul>
+
       <button
         @click="logout"
-        class="flex items-center gap-2 py-2 px-4 text-white text-lg font-bold capitalize"
+        style="background-color: #09244b08"
+        class="flex items-center rounded-lg gap-2 py-2 px-4 mx-4 text-sidebarText text-lg font-bold capitalize"
       >
-        <LogoutIcon class="fill-white" />
+        <LogoutIcon class="fill-sidebarText" />
         <span v-if="showMenu">logout</span>
       </button>
     </div>

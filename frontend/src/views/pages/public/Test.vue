@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import CrudPageLayout from "@/views/layouts/crud/CrudPageLayout.vue";
-import ProjectForm from "@/views/pages/admin/projects/ProjectForm.vue";
+import ProjectForm from "@/views/pages/admin/project/ProjectForm.vue";
 
 const tHeaders = ["id", "name ar", "name en"];
 const tColumns = ["UNIT_ID", "UNIT_AR", "UNIT_EN"];

@@ -4,8 +4,8 @@ import Login from "@/views/pages/public/login/Login.vue";
 import Layout from "@/views/layouts/Layout.vue";
 import Home from "@/views/pages/public/Home.vue";
 import Test from "@/views/pages/public/Test.vue";
-import Projects from "@/views/pages/admin/projects/Projects.vue";
-import MembersTypes from "@/views/pages/admin/membersTypes/MembersTypes.vue";
+import Projects from "@/views/pages/admin/project/Project.vue";
+import MembersTypes from "@/views/pages/admin/memberType/MemberType.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import BarIcon from "../../icons/BarIcon.vue";
+import BarIcon from "@/views/components/icons/BarIcon.vue";
 import NavbarAction from "./NavbarAction.vue";
 </script>
 <template>

@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import MainTable from "@/views/components/MainTable.vue";
-import NoData from "@/views/components/NoData.vue";
-import Pagination from "@/views/components/Pagination.vue";
-import Filter from "../../Filter.vue";
-import FilterMenu from "../../FilterMenu.vue";
+import MainTable from "@/views/components/crud/MainTable.vue";
+import NoData from "@/views/components/crud/NoData.vue";
+import Pagination from "@/views/components/crud/Pagination.vue";
+import Filter from "@/views/components/crud/filter/Filter.vue";
+import FilterMenu from "@/views/components/crud/filter/FilterMenu.vue";
 import { inject } from "vue";
-import Sppiner from "@/views/components/Sppiner.vue";
+import Sppiner from "@/views/components/public/Sppiner.vue";
 import { computed } from "vue";
 
 const {

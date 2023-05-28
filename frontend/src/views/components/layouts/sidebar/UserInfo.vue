@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ArrowDownIcon from "../../icons/ArrowDownIcon.vue";
+import ArrowDownIcon from "@/views/components/icons/ArrowDownIcon.vue";
 
 defineProps({
   showMenu: Boolean,

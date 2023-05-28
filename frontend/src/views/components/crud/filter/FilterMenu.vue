@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import MainBtn from "./MainBtn.vue";
-import CloseIcon from "./icons/CloseIcon.vue";
-import FilterIcon from "./icons/FilterIcon.vue";
+import MainBtn from "@/views/components/inputs/MainBtn.vue";
+import CloseIcon from "@/views/components/icons/CloseIcon.vue";
+import FilterIcon from "@/views/components/icons/FilterIcon.vue";
 const { filterFormData, onRead } = defineProps({
   filterFormData: {
     type: Object,

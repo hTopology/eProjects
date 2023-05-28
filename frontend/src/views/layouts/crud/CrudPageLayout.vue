@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, onMounted, provide, ref, shallowRef } from "vue";
-import ICrudPageLayout from "../layouts/ICrudPageLayout.vue";
-import CrudDialogLayout from "@/views/layouts/CrudDialogLayout.vue";
-import CurdCurrentLayout from "@/views/layouts/CurdCurrentLayout.vue";
+import ICrudPageLayout from "@/views/layouts/crud/ICrudPageLayout.vue";
+import CrudDialogLayout from "@/views/layouts/crud/CrudDialogLayout.vue";
+import CurdCurrentLayout from "@/views/layouts/crud/CurdCurrentLayout.vue";
 import { post, put, remove } from "@/services/crud.service";
 import { useVuelidate } from "@vuelidate/core";
 

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { provide } from "vue";
-import CrudPageLayout from "../layouts/CrudPageLayout.vue";
-import ProjectForm from "@/views/forms/ProjectForm.vue";
-import ProjectFilterForm from "@/views/forms/ProjectFilterForm.vue";
+import CrudPageLayout from "@/views/layouts/crud/CrudPageLayout.vue";
+import ProjectForm from "./ProjectForm.vue";
+import ProjectFilterForm from "./ProjectFilterForm.vue";
 
 const tHeaders = ["id", "name"];
 const tColumns = ["PROJECT_ID", "PROJECT"];

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import Title from "../components/Title.vue";
-import NotificationBox from "../components/NotificationBox.vue";
+import Title from "@/views/components/public/Title.vue";
+import NotificationBox from "@/views/components/public/NotificationBox.vue";
 </script>
 <template>
   <Title title="dashboard" />

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import CartIcon from "./icons/CartIcon.vue";
+import CartIcon from "@/views/components/icons/CartIcon.vue";
 </script>
 <template>
   <div class="flex flex-col gap-3 p-5 bg-white rounded-md shadow-lg flex-1">

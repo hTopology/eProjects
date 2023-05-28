@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import DownloadIcon from "../icons/DownloadIcon.vue";
+import DownloadIcon from "@/views/components/icons/DownloadIcon.vue";
 
 const props = defineProps({
   btnStyle: {

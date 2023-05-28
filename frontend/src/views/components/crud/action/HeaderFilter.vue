@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Dropdown from "@/views/components/Dropdown.vue";
+import Dropdown from "@/views/components/inputs/Dropdown.vue";
 import SearchIcon from "@/views/components/icons/SearchIcon.vue";
 import { watch } from "vue";
 import { ref } from "vue";

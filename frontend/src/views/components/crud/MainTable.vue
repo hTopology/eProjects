@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import DeleteModal from "@/views/components/DeleteModal.vue";
-import EditIcon from "./icons/EditIcon.vue";
-import DeleteIcon from "./icons/DeleteIcon.vue";
+import DeleteModal from "@/views/components/public/DeleteModal.vue";
+import EditIcon from "@/views/components/icons/EditIcon.vue";
+import DeleteIcon from "@/views/components/icons/DeleteIcon.vue";
 const props = defineProps({
   tableContent: {
     type: Object,

@@ -4,7 +4,7 @@ import HeaderFilter from "./HeaderFilter.vue";
 import FilterBtn from "./FilterBtn.vue";
 import { inject } from "vue";
 import ClearFilter from "@/views/components/icons/ClearFilter.vue";
-import MainBtn from "@/views/components/MainBtn.vue";
+import MainBtn from "@/views/components/inputs/MainBtn.vue";
 
 const { onOpenForm, clearFilter, filterFormData }: any = inject("pageHeader");
 </script>

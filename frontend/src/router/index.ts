@@ -1,11 +1,11 @@
 import { useUserStore } from "@/stores/user";
 import { createRouter, createWebHistory } from "vue-router";
-import Login from "@/views/pages/Login.vue";
+import Login from "@/views/pages/public/login/Login.vue";
 import Layout from "@/views/layouts/Layout.vue";
-import Home from "@/views/pages/Home.vue";
-import Test from "@/views/pages/Test.vue";
-import Projects from "@/views/pages/Projects.vue";
-import MembersTypes from "@/views/pages/MembersTypes.vue";
+import Home from "@/views/pages/public/Home.vue";
+import Test from "@/views/pages/public/Test.vue";
+import Projects from "@/views/pages/admin/projects/Projects.vue";
+import MembersTypes from "@/views/pages/admin/membersTypes/MembersTypes.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

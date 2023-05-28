@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Navbar from "@/views/components/layouts/navbar/Navbar.vue";
-import LoginForm from "@/views/components/login/LoginForm.vue";
-import Footer from "@/views/components/footer/Footer.vue";
+import LoginForm from "./LoginForm.vue";
+import Footer from "@/views/components/layouts/footer/Footer.vue";
 import { isAuthenticatedUser } from "@/services/sys.service";
 import { useUserStore } from "@/stores/user";
 import { ref } from "vue";

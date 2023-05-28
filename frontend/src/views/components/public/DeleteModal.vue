@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import CheckIcon from "./icons/CheckIcon.vue";
-import CloseIcon from "./icons/CloseIcon.vue";
+import CheckIcon from "@/views/components/icons/CheckIcon.vue";
+import CloseIcon from "@/views/components/icons/CloseIcon.vue";
 </script>
 <template>
   <div

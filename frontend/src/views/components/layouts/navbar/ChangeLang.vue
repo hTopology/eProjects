@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import LangIcon from "../../icons/LangIcon.vue";
+import LangIcon from "@/views/components/icons/LangIcon.vue";
 </script>
 <template>
   <div

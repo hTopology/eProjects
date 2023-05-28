@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import FooterBtn from "./FooterBtn.vue";
-import AppleIcon from "../icons/AppleIcon.vue";
-import GooglePlayIcon from "../icons/GooglePlayIcon.vue";
+import AppleIcon from "@/views/components/icons/AppleIcon.vue";
+import GooglePlayIcon from "@/views/components/icons/GooglePlayIcon.vue";
 </script>
 <template>
   <footer class="p-4 md:py-4 md:px-16 w-full bg-white fixed bottom-0">

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import CurdCurrentLayout from "@/views/layouts/CurdCurrentLayout.vue";
+import CurdCurrentLayout from "@/views/layouts/crud/CurdCurrentLayout.vue";
 const { filterFormData, onRead } = defineProps({
   filterFormData: {
     type: Object,

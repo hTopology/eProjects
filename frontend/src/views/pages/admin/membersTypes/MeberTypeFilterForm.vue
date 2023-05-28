@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import MainInput from "../components/MainInput.vue";
+import MainInput from "@/views/components/inputs/MainInput.vue";
 
 defineProps({
   filterFormData: {

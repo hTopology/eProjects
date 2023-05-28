@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Title from "../../Title.vue";
+import Title from "@/views/components/public/Title.vue";
 import Action from "./action/Action.vue";
 import { inject } from "vue";
 

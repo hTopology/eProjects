@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { provide } from "vue";
-import CrudPageLayout from "../layouts/CrudPageLayout.vue";
-import MemberTypeForm from "@/views/forms/MemberTypeForm.vue";
-import MeberTypeFilterForm from "@/views/forms/MeberTypeFilterForm.vue";
+import CrudPageLayout from "@/views/layouts/crud/CrudPageLayout.vue";
+import MemberTypeForm from "./MemberTypeForm.vue";
+import MeberTypeFilterForm from "./MeberTypeFilterForm.vue";
 
 const tHeaders = ["id", "name"];
 const tColumns = ["MEMBER_TYPE_ID", "MEMBER_TYPE"];

@@ -95,7 +95,7 @@ async function onSave() {
 }
 async function onCreate() {
   const pKey = await post(`create/${props.entityId}`, formData.value);
-  Object.assign(filterFormData.value, { [props.pKey[0]]: pKey.ID });
+  Object.assign(filterFormData.value, { [props.pKey[0]]: pKey[0].PK });
   console.log(filterFormData.value);
   curPage.value = filterFormData.value.CurPage;
   filterFormData.value.CurPage = 1;

@@ -1,21 +1,194 @@
 <template>
-  <div role="status" class="absolute -translate-x-1/2 -translate-y-1/2 top-2/4 left-1/2">
+  <div class="absolute -translate-x-1/2 -translate-y-1/2 top-2/4 left-1/2">
     <svg
-      aria-hidden="true"
-      class="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
-      viewBox="0 0 100 101"
-      fill="none"
+      width="44"
+      height="44"
+      viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path
-        d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
-        fill="currentColor"
+      <rect class="spinner_zWVm" x="1" y="1" width="7.33" height="7.33" />
+      <rect class="spinner_gfyD" x="8.33" y="1" width="7.33" height="7.33" />
+      <rect class="spinner_T5JJ" x="1" y="8.33" width="7.33" height="7.33" />
+      <rect class="spinner_E3Wz" x="15.66" y="1" width="7.33" height="7.33" />
+      <rect class="spinner_g2vs" x="8.33" y="8.33" width="7.33" height="7.33" />
+      <rect class="spinner_ctYB" x="1" y="15.66" width="7.33" height="7.33" />
+      <rect
+        class="spinner_BDNj"
+        x="15.66"
+        y="8.33"
+        width="7.33"
+        height="7.33"
       />
-      <path
-        d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
-        fill="currentFill"
+      <rect
+        class="spinner_rCw3"
+        x="8.33"
+        y="15.66"
+        width="7.33"
+        height="7.33"
+      />
+      <rect
+        class="spinner_Rszm"
+        x="15.66"
+        y="15.66"
+        width="7.33"
+        height="7.33"
       />
     </svg>
-    <span class="sr-only">Loading...</span>
   </div>
 </template>
+<style scoped>
+.spinner_zWVm {
+  animation: spinner_5QiW 1.2s linear infinite,
+    spinner_PnZo 1.2s linear infinite;
+}
+.spinner_gfyD {
+  animation: spinner_5QiW 1.2s linear infinite,
+    spinner_4j7o 1.2s linear infinite;
+  animation-delay: 0.1s;
+}
+.spinner_T5JJ {
+  animation: spinner_5QiW 1.2s linear infinite,
+    spinner_fLK4 1.2s linear infinite;
+  animation-delay: 0.1s;
+}
+.spinner_E3Wz {
+  animation: spinner_5QiW 1.2s linear infinite,
+    spinner_tDji 1.2s linear infinite;
+  animation-delay: 0.2s;
+}
+.spinner_g2vs {
+  animation: spinner_5QiW 1.2s linear infinite,
+    spinner_CMiT 1.2s linear infinite;
+  animation-delay: 0.2s;
+}
+.spinner_ctYB {
+  animation: spinner_5QiW 1.2s linear infinite,
+    spinner_cHKR 1.2s linear infinite;
+  animation-delay: 0.2s;
+}
+.spinner_BDNj {
+  animation: spinner_5QiW 1.2s linear infinite,
+    spinner_Re6e 1.2s linear infinite;
+  animation-delay: 0.3s;
+}
+.spinner_rCw3 {
+  animation: spinner_5QiW 1.2s linear infinite,
+    spinner_EJmJ 1.2s linear infinite;
+  animation-delay: 0.3s;
+}
+.spinner_Rszm {
+  animation: spinner_5QiW 1.2s linear infinite,
+    spinner_YJOP 1.2s linear infinite;
+  animation-delay: 0.4s;
+}
+@keyframes spinner_5QiW {
+  0%,
+  50% {
+    width: 7.33px;
+    height: 7.33px;
+  }
+  25% {
+    width: 1.33px;
+    height: 1.33px;
+  }
+}
+@keyframes spinner_PnZo {
+  0%,
+  50% {
+    x: 1px;
+    y: 1px;
+  }
+  25% {
+    x: 4px;
+    y: 4px;
+  }
+}
+@keyframes spinner_4j7o {
+  0%,
+  50% {
+    x: 8.33px;
+    y: 1px;
+  }
+  25% {
+    x: 11.33px;
+    y: 4px;
+  }
+}
+@keyframes spinner_fLK4 {
+  0%,
+  50% {
+    x: 1px;
+    y: 8.33px;
+  }
+  25% {
+    x: 4px;
+    y: 11.33px;
+  }
+}
+@keyframes spinner_tDji {
+  0%,
+  50% {
+    x: 15.66px;
+    y: 1px;
+  }
+  25% {
+    x: 18.66px;
+    y: 4px;
+  }
+}
+@keyframes spinner_CMiT {
+  0%,
+  50% {
+    x: 8.33px;
+    y: 8.33px;
+  }
+  25% {
+    x: 11.33px;
+    y: 11.33px;
+  }
+}
+@keyframes spinner_cHKR {
+  0%,
+  50% {
+    x: 1px;
+    y: 15.66px;
+  }
+  25% {
+    x: 4px;
+    y: 18.66px;
+  }
+}
+@keyframes spinner_Re6e {
+  0%,
+  50% {
+    x: 15.66px;
+    y: 8.33px;
+  }
+  25% {
+    x: 18.66px;
+    y: 11.33px;
+  }
+}
+@keyframes spinner_EJmJ {
+  0%,
+  50% {
+    x: 8.33px;
+    y: 15.66px;
+  }
+  25% {
+    x: 11.33px;
+    y: 18.66px;
+  }
+}
+@keyframes spinner_YJOP {
+  0%,
+  50% {
+    x: 15.66px;
+    y: 15.66px;
+  }
+  25% {
+    x: 18.66px;
+    y: 18.66px;
+  }
+}
+</style>

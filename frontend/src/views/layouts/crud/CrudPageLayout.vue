@@ -102,7 +102,9 @@ async function onCreate() {
   await onRead();
 }
 async function onRead() {
+  isLoading.value = true;
   data.value = await post(`read/${props.entityId}`, filterFormData.value);
+  isLoading.value = false;
 }
 async function onUpdate() {
   await put(`update/${props.entityId}`, formData.value);

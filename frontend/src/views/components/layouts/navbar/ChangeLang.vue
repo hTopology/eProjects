@@ -21,6 +21,6 @@ function changeLang() {
     class="hidden md:flex gap-1 items-center text-primary border-2 border-primary rounded-3xl px-3"
   >
     <LangIcon />
-    <span class="uppercase">{{ $t("lang") }}</span>
+    <span class="uppercase">{{ locale }}</span>
   </div>
 </template>

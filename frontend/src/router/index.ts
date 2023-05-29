@@ -5,6 +5,7 @@ import Layout from "@/views/layouts/Layout.vue";
 import Home from "@/views/pages/public/Home.vue";
 import Test from "@/views/pages/public/Test.vue";
 import Projects from "@/views/pages/admin/project/Project.vue";
+import ProjectsOfYear from "@/views/pages/admin/projectsOfYear/ProjectsOfYear.vue";
 import MembersTypes from "@/views/pages/admin/memberType/MemberType.vue";
 
 const router = createRouter({
@@ -29,6 +30,11 @@ const router = createRouter({
           path: "/projects",
           name: "projects",
           component: Projects,
+        },
+        {
+          path: "/projectsOfYear",
+          name: "projectsOfYear",
+          component: ProjectsOfYear,
         },
         {
           path: "/membersTypes",

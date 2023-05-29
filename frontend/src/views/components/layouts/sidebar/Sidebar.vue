@@ -5,6 +5,8 @@ import { useUserStore } from "@/stores/user";
 import router from "@/router";
 import LogoutIcon from "../../icons/LogoutIcon.vue";
 import UserInfo from "./UserInfo.vue";
+import SideBarSubLinks from "./SideBarSubLinks.vue";
+import HomeIcon from "../../icons/HomeIcon.vue";
 defineProps({
   showMenu: {
     type: Boolean,
@@ -27,11 +29,19 @@ function logout() {
       <UserInfo :showMenu="showMenu" />
       <ul class="space-y-2 p-4 font-medium h-full overflow-y-auto">
         <SidebarLink
-          v-for="item in menu[1]"
+          v-for="item in menu[1].defaultLinks"
           :key="item.linkName"
           :showMenu="showMenu"
           :to="item.to"
           :icon="item.icon"
+          :linkName="item.linkName"
+        />
+        <SideBarSubLinks
+          :showMenu="showMenu"
+          v-for="item in menu[1].subLinks"
+          :key="item.linkName"
+          :links="item.links"
+          :icon="HomeIcon"
           :linkName="item.linkName"
         />
       </ul>

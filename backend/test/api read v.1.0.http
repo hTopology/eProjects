@@ -5,5 +5,55 @@
 
 @contentType = application/json
 
-### Post categories
-POST  {{protocol}}://{{host}}/eProjects/api/read/projects
+### Post projects
+POST {{protocol}}://{{host}}/eProjects/api/read/projects
+Content-Type:{{contentType}}
+
+{
+    "PROJECT_ID": 1,
+    "PROJECT": "مشروع إفطار صائم",
+    "IS_ACTIVE": 1
+}
+
+### Post projects_members
+POST {{protocol}}://{{host}}/eProjects/api/read/projects_members
+Content-Type:{{contentType}}
+
+{
+    "FISCAL_YEAR_ID": 20,
+    "PROJECT_ID": 1,
+    "IS_ACTIVE": 1
+}
+
+### Post projects_customers
+POST {{protocol}}://{{host}}/eProjects/api/read/projects_customers
+Content-Type:{{contentType}}
+
+{
+    "FISCAL_YEAR_ID": 20,
+    "PROJECT_ID": 1,
+    "IS_ACTIVE": 1
+}
+
+### Post items
+POST {{protocol}}://{{host}}/eProjects/api/read/items
+Content-Type:{{contentType}}
+
+{
+    "GROUP_ID": 1,
+    "ITEM_ID": 1,
+    "IS_ACTIVE": 1
+}
+
+### Post customers locations items
+POST {{protocol}}://{{host}}/eProjects/api/read/customers_locations_items
+Content-Type:{{contentType}}
+
+{
+    "FISCAL_YEAR_ID": 20,
+    "PROJECT_ID": 1,
+    "CUSTOMER_ID": 1
+}
+
+### Post supply orders
+POST {{protocol}}://{{host}}/eProjects/api/read/supply_orders

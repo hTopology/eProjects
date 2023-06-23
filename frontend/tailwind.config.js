@@ -6,6 +6,8 @@ module.exports = {
     extend: {
       colors: {
         primary: "#006749",
+        primary200: "#CCE1DB",
+        neutral900: '#0F172A',
         secodry: "#94A3B8",
         third: "#CBD5E1",
         sidebarText: "#526581",

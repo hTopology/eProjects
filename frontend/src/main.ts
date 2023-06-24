@@ -6,14 +6,20 @@ import router from "./router";
 import { createI18n } from "vue-i18n";
 
 import "./assets/style/main.css";
-// import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const app = createApp(App);
+
+import en from '@/locales/en.json'
+import ar from '@/locales/ar.json'
 
 const i18n = createI18n({
   legacy: false,
   locale: "en",
   fallbackLocale: "en",
+  messages: {
+    en,
+    ar
+  }
 });
 
 app.use(createPinia());

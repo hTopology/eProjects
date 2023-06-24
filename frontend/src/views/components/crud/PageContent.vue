@@ -34,7 +34,7 @@ function onFilter() {
 </script>
 
 <template>
-  <div class="px-10">
+  <div class="px-10 dark:bg-gray-600">
     <component
       v-if="filterForm"
       :is="dynamicFilterComponent"

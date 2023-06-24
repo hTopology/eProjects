@@ -78,11 +78,11 @@ function setFormData(index: number) {
   isCreateMode.value
     ? (formData.value = {})
     : Object.assign(
-        formData.value,
-        data.value[index],
-        { oPKey: getPKeys(index) },
-        props.extendedData
-      );
+      formData.value,
+      data.value[index],
+      { oPKey: getPKeys(index) },
+      props.extendedData
+    );
 }
 const v$ = useVuelidate(rules, formData);
 async function onSave() {
@@ -180,18 +180,12 @@ provide("pageContent", {
 </script>
 
 <template>
-  <div>
-    <ICrudPageLayout :class="{ hidden: isFullPage }" />
+  <ICrudPageLayout :class="{ hidden: isFullPage }" />
 
-    <component
-      :onSave="onSave"
-      :title="pageMode + ' ' + props.entityId"
-      :is="dynamicComponent"
-      :onClose="restVariablesToDefaultValue"
-    >
-      <template #formContent
-        ><component :is="form" :formData="formData" v-model="rules" :v$="v$"
-      /></template>
-    </component>
-  </div>
+  <component :onSave="onSave" :title="pageMode + ' ' + props.entityId" :is="dynamicComponent"
+    :onClose="restVariablesToDefaultValue">
+    <template #formContent>
+      <component :is="form" :formData="formData" v-model="rules" :v$="v$" />
+    </template>
+  </component>
 </template>

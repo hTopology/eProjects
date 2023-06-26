@@ -8,14 +8,14 @@ import { onMounted } from "vue";
 const { locale } = useI18n();
 const showSppiner = ref(false);
 
-onMounted(()=>{
-  changeDirection(localStorage.getItem('lang') ||'en')
-})
-useStorage('lang',locale)
-function changeDirection(value:string) {
+onMounted(() => {
+  changeDirection(localStorage.getItem("lang") || "en");
+});
+useStorage("lang", locale);
+function changeDirection(value: string) {
   const html = document.querySelector("html");
   if (html) {
-    html.lang = value ;
+    html.lang = value;
   }
 }
 function changeLang() {
@@ -24,12 +24,14 @@ function changeLang() {
   showSppiner.value = true;
   setTimeout(() => {
     showSppiner.value = false;
-  }, 500);
+  }, 300);
 }
 </script>
 <template>
-  <button @click="changeLang"
-    class="hidden md:flex gap-1 items-center text-primary border-2 border-primary rounded-3xl px-3">
+  <button
+    @click="changeLang"
+    class="hidden md:flex gap-1 items-center text-primary border-2 border-primary rounded-3xl px-3"
+  >
     <LangIcon />
     <span class="uppercase">{{ locale }}</span>
   </button>

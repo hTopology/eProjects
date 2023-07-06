@@ -3,7 +3,10 @@
 import NavbarAction from "./NavbarAction.vue";
 </script>
 <template>
-  <nav class="px-4 md:px-10 py-3 w-full bg-white border-b border-gray-200 z-50">
+  <nav
+    class="px-4 md:px-10 py-3 w-full bg-white border-b border-gray-200 z-50"
+    v-once
+  >
     <div class="flex items-center justify-between gap-3">
       <div class="flex items-center gap-4">
         <!-- <BarIcon

@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import CheckIcon from "@/views/components/icons/CheckIcon.vue";
 import CloseIcon from "@/views/components/icons/CloseIcon.vue";
+defineProps({
+  confirm: Function,
+});
 </script>
 <template>
   <div

@@ -1,7 +1,7 @@
 import { APISettings } from '../config.js';
 import { apiFetch } from './api.service.js';
 
-async function post(input: RequestInfo | URL, body: any) {
+async function post(input: RequestInfo | URL, body: any={}) {
   APISettings.method = 'POST';
   APISettings.body = JSON.stringify(body);
   const data = await apiFetch(input, APISettings);

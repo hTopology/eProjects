@@ -28,6 +28,6 @@ provide("baseSearch", [
     :form="MemberTypeForm"
     :tHeaders="tHeaders"
     :tColumns="tColumns"
-    formPageType="dialog"
+    formPageType="current"
   />
 </template>

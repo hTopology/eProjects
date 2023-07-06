@@ -14,6 +14,7 @@ const dynamicItemInMenu = {
       subLinks: [
         { to: "/projects", linkName: "projects", icon: HomeIcon },
         { to: "/membersTypes", linkName: "members types", icon: HomeIcon },
+        { to: "/locations", linkName: "locations", icon: HomeIcon },
       ],
     },
     // { to: "/", linkName: "locations of years", icon: HomeIcon },

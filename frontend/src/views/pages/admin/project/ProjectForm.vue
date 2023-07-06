@@ -24,7 +24,6 @@ modelValue.value = {
     :autofocus="true"
     v-model="formData.PROJECT"
     lable="project *"
-    :isEmpty="isEmpty"
     :validation="v$?.PROJECT"
   />
   <div

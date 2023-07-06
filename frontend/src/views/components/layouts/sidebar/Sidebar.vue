@@ -24,6 +24,7 @@ function logout() {
   <aside
     :class="[{ 'w-60': showMenu }, { 'w-0 md:w-auto': !showMenu }]"
     class="md:block transition-all bg-white"
+    v-once
   >
     <div class="flex flex-col pb-8 h-full">
       <UserInfo :showMenu="showMenu" />

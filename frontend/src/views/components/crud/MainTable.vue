@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import DeleteModal from "@/views/components/public/DeleteModal.vue";
 import EditIcon from "@/views/components/icons/EditIcon.vue";
-import DeleteIcon from "@/views/components/icons/DeleteIcon.vue";
+import DeleteButton from "@/views/components/public/DeleteButton.vue";
 const props = defineProps({
   tableContent: {
     type: Object,
@@ -21,17 +20,16 @@ const props = defineProps({
 
 const displayDeleteModal = ref(false);
 const selectedIndex = ref(-1);
-function openDeleteModal(index: number) {
-  selectedIndex.value = index;
-  displayDeleteModal.value = true;
-}
-function closeDelteModal() {
-  selectedIndex.value = -1;
-  displayDeleteModal.value = false;
-}
-function confirmDelte() {
-  props.onDelete(selectedIndex.value);
-  closeDelteModal();
+// function openDeleteModal(index: number) {
+//   selectedIndex.value = index;
+//   displayDeleteModal.value = true;
+// }
+// function closeDelteModal() {
+//   selectedIndex.value = -1;
+//   displayDeleteModal.value = false;
+// }
+function confirmDelte(index: number) {
+  props.onDelete(index);
 }
 </script>
 
@@ -102,18 +100,16 @@ function confirmDelte() {
               >
                 <EditIcon />
               </button>
-              <button @click="openDeleteModal(index)" type="button">
-                <DeleteIcon />
-              </button>
+              <DeleteButton @confirm="confirmDelte(index)" />
             </div>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
-  <DeleteModal
+  <!-- <DeleteModal
     v-if="displayDeleteModal"
     @confirmDelte="confirmDelte"
     @closeDelteModal="closeDelteModal"
-  />
+  /> -->
 </template>

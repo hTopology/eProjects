@@ -1,12 +1,12 @@
 @protocol = http
-@hostname = localhost
+@hostname = https://meiaservicestst.awqaf.gov.qa/eProjects/api
 @port = :3000
 @host = {{hostname}}{{port}}
 
 @contentType = application/json
 
 ### Post projects
-POST {{protocol}}://{{host}}/eProjects/api/read/projects
+POST {{hostname}}read/projects
 Content-Type:{{contentType}}
 
 {
@@ -16,7 +16,7 @@ Content-Type:{{contentType}}
 }
 
 ### Post projects_members
-POST {{protocol}}://{{host}}/eProjects/api/read/projects_members
+POST {{hostname}}/read/projects_members
 Content-Type:{{contentType}}
 
 {
@@ -26,7 +26,7 @@ Content-Type:{{contentType}}
 }
 
 ### Post projects_customers
-POST {{protocol}}://{{host}}/eProjects/api/read/projects_customers
+POST {{hostname}}/read/projects_customers
 Content-Type:{{contentType}}
 
 {
@@ -36,7 +36,7 @@ Content-Type:{{contentType}}
 }
 
 ### Post items
-POST {{protocol}}://{{host}}/eProjects/api/read/items
+POST {{hostname}}/read/items
 Content-Type:{{contentType}}
 
 {
@@ -46,7 +46,7 @@ Content-Type:{{contentType}}
 }
 
 ### Post customers locations items
-POST {{protocol}}://{{host}}/eProjects/api/read/customers_locations_items
+POST {{hostname}}/read/customers_locations_items
 Content-Type:{{contentType}}
 
 {
@@ -56,4 +56,24 @@ Content-Type:{{contentType}}
 }
 
 ### Post supply orders
-POST {{protocol}}://{{host}}/eProjects/api/read/supply_orders
+POST {{hostname}}/read/supply_orders
+
+### Post locations
+POST {{hostname}}/read/locations
+
+### Post cities
+POST {{hostname}}/read/cities
+Content-Type:{{contentType}}
+
+{
+    "CITY_ID": 1,
+    "CITY": "الدوحة"
+}
+
+### Post zones
+POST {{hostname}}/read/zones
+Content-Type:{{contentType}}
+
+{
+    "CITY_ID":1
+}

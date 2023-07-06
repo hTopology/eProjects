@@ -24,7 +24,6 @@ modelValue.value = {
     :autofocus="true"
     v-model="formData.MEMBER_TYPE"
     lable="member type *"
-    :isEmpty="isEmpty"
     :validation="v$?.MEMBER_TYPE"
   />
 </template>

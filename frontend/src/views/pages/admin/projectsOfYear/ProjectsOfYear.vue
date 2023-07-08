@@ -1,11 +1,44 @@
 <script setup lang="ts">
-import { provide } from "vue";
+import { provide, ref } from "vue";
 import CrudPageLayout from "@/views/layouts/crud/CrudPageLayout.vue";
 import form from "./ProjectsOfYearForm.vue";
 import filterForm from "./ProjectsOfYearFilterForm.vue";
-
-const tHeaders = ["id", "name"];
-const tColumns = ["PROJECT_ID", "PROJECT"];
+import ProjectLocation from "./ProjectLocation.vue";
+import ProjectCustomer from "./ProjectCustomer.vue";
+import CrudDailogLink from "@/views/layouts/crud/CrudDailogLink.vue";
+const tHeaders = ["id", "name", "locations", "customers", "members"];
+const locationFormData = ref();
+const tColumns = [
+  "PROJECT_ID",
+  "PROJECT",
+  {
+    name: "locations",
+    action: addLocations,
+  },
+  {
+    name: "customers",
+    action: addLocations,
+  },
+  {
+    name: "members",
+    action: addLocations,
+  },
+];
+const addToProject = {
+  locations: {
+    form: ProjectLocation,
+    title: "locations",
+    tHeaders: ["location"],
+    tColumns: ["LOCATION"],
+    pKey: ["FISCAL_YEAR_ID", "PROJECT_ID", "LOCATION"],
+  },
+} as any;
+const selectedProject = ref();
+const addMode = ref();
+function addLocations(data: any, key: string) {
+  selectedProject.value = data;
+  addMode.value = addToProject[key];
+}
 provide("pageTitle", "projects of year");
 provide("baseSearch", [
   {
@@ -17,6 +50,9 @@ provide("baseSearch", [
     value: "PROJECT",
   },
 ]);
+function onClose() {
+  addMode.value = null;
+}
 </script>
 
 <template>
@@ -29,5 +65,15 @@ provide("baseSearch", [
     :tHeaders="tHeaders"
     :tColumns="tColumns"
     formPageType="dialog"
+  />
+  <CrudDailogLink
+    v-if="addMode"
+    :onClose="onClose"
+    :form="addToProject['locations']"
+    :pKey="['FISCAL_YEAR_ID', 'PROJECT_ID', 'LOCATION']"
+    :extendedFormData="{
+      FISCAL_YEAR_ID: selectedProject?.FISCAL_YEAR_ID,
+      PROJECT_ID: selectedProject?.PROJECT_ID,
+    }"
   />
 </template>

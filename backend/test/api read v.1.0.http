@@ -77,3 +77,15 @@ Content-Type:{{contentType}}
 {
     "CITY_ID":1
 }
+
+### Post projects locations
+POST {{hostname}}/read/projects_locations
+
+### Post projects locations
+POST {{hostname}}/read/projects_members
+
+### Post projects locations
+POST {{hostname}}/read/members
+
+### Post projects locations
+POST {{hostname}}/read/members

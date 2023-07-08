@@ -9,6 +9,8 @@ import Locations from "@/views/pages/admin/location/Location.vue";
 import ProjectsOfYear from "@/views/pages/admin/projectsOfYear/ProjectsOfYear.vue";
 import MembersTypes from "@/views/pages/admin/memberType/MemberType.vue";
 
+import SupplyOrder from "@/views/pages/user/supplyOrder/SupplyOrder.vue"
+import RecivedOrder from "@/views/pages/user/recivedOrder/RecivedOrder.vue"
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -51,6 +53,16 @@ const router = createRouter({
           path: "/test",
           name: "test",
           component: Test,
+        },
+        {
+          path: "/supplyOrder",
+          name: "supplyOrder",
+          component: SupplyOrder,
+        },
+        {
+          path: "/recivedOrder",
+          name: "recivedOrder",
+          component: RecivedOrder,
         },
       ],
     },

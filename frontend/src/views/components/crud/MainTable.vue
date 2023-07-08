@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import EditIcon from "@/views/components/icons/EditIcon.vue";
 import DeleteButton from "@/views/components/public/DeleteButton.vue";
+import CrudDailogLink from "@/views/layouts/crud/CrudDailogLink.vue";
 const props = defineProps({
   tableContent: {
     type: Object,
@@ -58,31 +59,14 @@ function confirmDelte(index: number) {
             :key="(lable as string)"
             class="px-6 py-3"
             :class="[
+              { 'text-blue-600 cursor-pointer': lable.action },
               { 'bg-tableRow': index % 2 === 0 },
               { 'bg-white': index % 2 != 0 },
               { 'rounded-tl-xl rounded-bl-xl': tedIndex == 0 },
             ]"
+            @click="lable.action && lable.action(row, lable.name)"
           >
-            {{ row[lable as string] }}
-          </td>
-          <td
-            class="px-6 py-3"
-            :class="[
-              { 'text-blue-600 cursor-pointer': lable.action },
-              { 'bg-tableRow': index % 2 === 0 },
-              { 'bg-white': index % 2 != 0 },
-            ]"
-            v-for="lable in extendedColumns"
-            @click="
-              lable.action &&
-                lable.action(
-                  row[tableContent.tColumns[0]],
-                  row[tableContent.tColumns[1]]
-                )
-            "
-            :key="(lable as string)"
-          >
-            {{ lable.name }}
+            {{ row[lable as string] || lable.name }}
           </td>
 
           <td
@@ -107,9 +91,4 @@ function confirmDelte(index: number) {
       </tbody>
     </table>
   </div>
-  <!-- <DeleteModal
-    v-if="displayDeleteModal"
-    @confirmDelte="confirmDelte"
-    @closeDelteModal="closeDelteModal"
-  /> -->
 </template>

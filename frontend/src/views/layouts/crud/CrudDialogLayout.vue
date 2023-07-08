@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import CloseIcon from "@/views/components/icons/CloseIcon.vue";
-
+// enum EnumDialogWidth {
+//   sm = "max-w-sm",
+//   md = "max-w-md",
+// }
 defineProps({
+  // sm md lg xl 2xl
+  dialogWidth: { type: String, default: "max-w-2xl" },
   onSave: {
     type: Function,
-    required: true,
   },
   onClose: {
     type: Function,
@@ -29,7 +33,7 @@ defineProps({
   <div
     class="fixed bg-black bg-opacity-50 flex items-center justify-center top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-full"
   >
-    <div class="relative w-full max-w-2xl max-h-full">
+    <div class="relative w-full max-h-full" :class="dialogWidth">
       <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
         <div
           v-if="hasHeader"
@@ -55,6 +59,7 @@ defineProps({
           class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600"
         >
           <button
+            v-if="onSave"
             @click="onSave()"
             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >

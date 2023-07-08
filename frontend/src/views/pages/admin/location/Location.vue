@@ -6,7 +6,6 @@ import LocationFilterForm from "./LocationFilterForm.vue";
 
 const tHeaders = ["id", "location", "city", "zone"];
 const tColumns = ["LOCATION_ID", "LOCATION", "CITY", "ZONE"];
-const required = ["LOCATION"];
 provide("pageTitle", "projects");
 provide("baseSearch", [
   {
@@ -38,6 +37,5 @@ provide("baseSearch", [
     :tHeaders="tHeaders"
     :tColumns="tColumns"
     formPageType="newPage"
-    :requiredControls="required"
   />
 </template>

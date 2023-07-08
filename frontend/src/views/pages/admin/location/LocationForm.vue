@@ -23,6 +23,8 @@ const props = defineProps({
 const modelValue = defineModel();
 modelValue.value = {
   LOCATION: { required },
+  CITY_ID: { required },
+  ZONE_ID: { required },
 };
 const cities = ref();
 async function getCities() {
@@ -47,12 +49,18 @@ async function getZones() {
     @change="getZones"
     v-model="formData.CITY_ID"
     :options="cities"
+    :validation="v$?.CITY_ID"
   >
     <option v-for="city in cities" :value="city.CITY_ID">
       {{ city.CITY }}
     </option>
   </MainSelect>
-  <MainSelect lable="zone" v-model="formData.ZONE_ID" :options="zones">
+  <MainSelect
+    lable="zone"
+    v-model="formData.ZONE_ID"
+    :options="zones"
+    :validation="v$?.ZONE_ID"
+  >
     <option v-for="zone in zones" :value="zone.ZONE_ID">
       {{ zone.ZONE }}
     </option>

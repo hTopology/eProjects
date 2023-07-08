@@ -20,7 +20,7 @@ const props = defineProps({
     type: Object,
     required: true,
   },
-  extendedData: {
+  extendedFormData: {
     type: Object,
   },
   formPageType: String,
@@ -76,13 +76,15 @@ function onOpenForm(mode: string, index: number = -1) {
 
 function setFormData(index: number) {
   isCreateMode.value
-    ? (formData.value = {})
+    ? Object.assign(formData.value, props.extendedFormData)
     : Object.assign(
         formData.value,
         data.value[index],
         { oPKey: getPKeys(index) },
-        props.extendedData
+        props.extendedFormData
       );
+
+  console.log(formData.value);
 }
 const v$ = useVuelidate(rules, formData);
 async function onSave() {

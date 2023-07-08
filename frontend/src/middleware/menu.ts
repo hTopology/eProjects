@@ -8,6 +8,8 @@ const dynamicItemInMenu = {
   1: [
     { to: "/", linkName: "home", icon: HomeIcon },
     { to: "/projectsOfYear", linkName: "projects of years", icon: HomeIcon },
+    { to: "/supplyOrder", linkName: "supply orders", icon: HomeIcon },
+    { to: "/recivedOrder", linkName: "recived orders", icon: HomeIcon },
     {
       linkName: "setting",
       icon: SettingIcon,
@@ -17,7 +19,6 @@ const dynamicItemInMenu = {
         { to: "/locations", linkName: "locations", icon: HomeIcon },
       ],
     },
-    // { to: "/", linkName: "locations of years", icon: HomeIcon },
   ],
   2: [{ link: "request", name: "new request" }, { ...mRequest }],
   3: [{ ...mRequest }, { ...po }],

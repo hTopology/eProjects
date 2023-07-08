@@ -6,7 +6,6 @@ import MeberTypeFilterForm from "./MeberTypeFilterForm.vue";
 
 const tHeaders = ["id", "name"];
 const tColumns = ["MEMBER_TYPE_ID", "MEMBER_TYPE"];
-provide("pageTitle", "members types");
 provide("baseSearch", [
   {
     key: "id",
@@ -21,6 +20,7 @@ provide("baseSearch", [
 
 <template>
   <CrudPageLayout
+    title="member type"
     :filterForm="MeberTypeFilterForm"
     filterFormType="menu"
     entityId="members_types"

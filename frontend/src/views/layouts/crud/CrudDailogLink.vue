@@ -17,7 +17,7 @@ const props = defineProps({
 <template>
   <Teleport to="#modal">
     <CrudDialogLayout
-      :title="'locations of: ' + props.extendedData?.PROJECT"
+      :title="'locations of: ' + props.form.title"
       :onClose="onClose"
       dialogWidth="max-w-5xl"
     >

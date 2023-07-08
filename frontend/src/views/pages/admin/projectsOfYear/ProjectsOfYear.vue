@@ -5,6 +5,7 @@ import form from "./ProjectsOfYearForm.vue";
 import filterForm from "./ProjectsOfYearFilterForm.vue";
 import ProjectLocation from "./ProjectLocation.vue";
 import ProjectCustomer from "./ProjectCustomer.vue";
+import ProjectMembers from "./ProjectMembers.vue";
 import CrudDailogLink from "@/views/layouts/crud/CrudDailogLink.vue";
 const tHeaders = ["id", "name", "locations", "customers", "members"];
 const locationFormData = ref();
@@ -31,6 +32,23 @@ const addToProject = {
     tHeaders: ["location"],
     tColumns: ["LOCATION"],
     pKey: ["FISCAL_YEAR_ID", "PROJECT_ID", "LOCATION"],
+    entityId: "projects_locations",
+  },
+  customers: {
+    form: ProjectCustomer,
+    title: "customers",
+    tHeaders: ["customer"],
+    tColumns: ["CUSTOMER"],
+    pKey: ["FISCAL_YEAR_ID", "PROJECT_ID", "LOCATION"],
+    entityId: "projects_customers",
+  },
+  members: {
+    form: ProjectMembers,
+    title: "members",
+    tHeaders: ["member", "member type"],
+    tColumns: ["MEMBER", "MEMBER_TYPE"],
+    pKey: ["FISCAL_YEAR_ID", "PROJECT_ID", "LOCATION"],
+    entityId: "projects_members",
   },
 } as any;
 const selectedProject = ref();
@@ -39,7 +57,6 @@ function addLocations(data: any, key: string) {
   selectedProject.value = data;
   addMode.value = addToProject[key];
 }
-provide("pageTitle", "projects of year");
 provide("baseSearch", [
   {
     key: "id",
@@ -57,6 +74,7 @@ function onClose() {
 
 <template>
   <CrudPageLayout
+    title="projects of years"
     :filterForm="filterForm"
     filterFormType="form"
     entityId="projects_of_year"
@@ -69,7 +87,7 @@ function onClose() {
   <CrudDailogLink
     v-if="addMode"
     :onClose="onClose"
-    :form="addToProject['locations']"
+    :form="addMode"
     :pKey="['FISCAL_YEAR_ID', 'PROJECT_ID', 'LOCATION']"
     :extendedFormData="{
       FISCAL_YEAR_ID: selectedProject?.FISCAL_YEAR_ID,

@@ -6,7 +6,6 @@ import LocationFilterForm from "./LocationFilterForm.vue";
 
 const tHeaders = ["id", "location", "city", "zone"];
 const tColumns = ["LOCATION_ID", "LOCATION", "CITY", "ZONE"];
-provide("pageTitle", "projects");
 provide("baseSearch", [
   {
     key: "id",
@@ -29,6 +28,7 @@ provide("baseSearch", [
 
 <template>
   <CrudPageLayout
+    title="locations"
     :filterForm="LocationFilterForm"
     filterFormType="form"
     entityId="locations"

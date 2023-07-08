@@ -10,6 +10,7 @@ const dynamicItemInMenu = {
     { to: "/projectsOfYear", linkName: "projects of years", icon: HomeIcon },
     { to: "/supplyOrder", linkName: "supply orders", icon: HomeIcon },
     { to: "/recivedOrder", linkName: "recived orders", icon: HomeIcon },
+    { to: "/pending", linkName: "pending orders", icon: HomeIcon },
     {
       linkName: "setting",
       icon: SettingIcon,

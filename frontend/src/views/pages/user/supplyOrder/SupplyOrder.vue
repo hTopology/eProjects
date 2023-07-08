@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import PageHeader from "@/views/components/crud/PageHeader.vue";
-import MainSelect from "@/views/components/inputs/MainSelect.vue";
-import ICard from "@/views/components/public/ICard.vue";
 import { ref } from "vue";
 import { provide } from "vue";
-import SupplyOrderCard from "./SupplyOrderCard.vue";
+import SupplyOrderItems from "./SupplyOrderItems.vue";
 provide("pageTitle", "supply orders");
-const soItems = ref([
+const data = ref({}) as any;
+data.value.items = [
   {
     LOCATION_ID: 1,
     LOCATION: "location 1",
@@ -14,7 +13,11 @@ const soItems = ref([
     ITEM_ID: 1,
     ITEM: "item 1 ",
     QTY: 12,
-    ITEMS_REMARKS: [{ REMARK_ID: 1, REMARK: "item remark 1" }],
+    ITEMS_REMARKS: [
+      { REMARK_ID: 1, REMARK: "item remark 1" },
+      { REMARK_ID: 2, REMARK: "item remark 2" },
+    ],
+    REMARK_ID: 1,
   },
   {
     LOCATION_ID: 2,
@@ -23,12 +26,26 @@ const soItems = ref([
     ITEM_ID: 2,
     ITEM: "item 2",
     QTY: 22,
-    ITEMS_REMARKS: [{ REMARK_ID: 2, REMARK: "item remark 2" }],
+    ITEMS_REMARKS: [
+      { REMARK_ID: 1, REMARK: "item remark 1" },
+      { REMARK_ID: 2, REMARK: "item remark 2" },
+    ],
+    REMARK_ID: 2,
   },
-]);
+];
+function save() {
+  let formData = [];
+  formData = data.value.items.map((item: any) => ({
+    ITEM_ID: item.ITEM_ID,
+    LOCATION_ID: item.LOCATION_ID,
+    QTY: item.QTY,
+    REMARK_ID: item.REMARK_ID || "",
+  }));
+  console.log(formData);
+}
 </script>
 <template>
-  <PageHeader>
+  <PageHeader title="supply order">
     <div class="flex items-center gap-4">
       <input type="date" class="bg-transparent outline-none" name="" id="" />
       <select
@@ -40,12 +57,7 @@ const soItems = ref([
     </div>
   </PageHeader>
   <div class="px-10">
-    <ul v-if="soItems">
-      <SupplyOrderCard
-        v-for="soItem in soItems"
-        :key="soItem.ITEM_ID"
-        :cardItems="soItem"
-      />
-    </ul>
+    <SupplyOrderItems :data="data" />
+    <button @click="save">save</button>
   </div>
 </template>

@@ -37,22 +37,23 @@ const props = defineProps({
   },
   filterFormType: String,
 });
-const formData = ref({}) as any;
-const data = ref();
-const tHeaders = props.tHeaders;
-const tColumns = props.tColumns;
-const dynamicComponent = shallowRef();
-const isLoading = ref(false);
-const curPage = ref(1);
-const isFullPage = ref(false);
-const filterForm = ref();
-const rules = ref({});
-const filterFormData: any = ref({
-  CurPage: +import.meta.env.VITE_CUR_PAGE,
-  PageSize: +import.meta.env.VITE_PAGE_SIZE,
-});
-const filterFormType = computed(() => props.filterFormType);
-const isCreateMode = computed(() => pageMode.value === "create");
+const formData = ref({}) as any,
+  data = ref(),
+  tHeaders = props.tHeaders,
+  tColumns = props.tColumns,
+  dynamicComponent = shallowRef(),
+  isLoading = ref(false),
+  curPage = ref(1),
+  isFullPage = ref(false),
+  filterForm = ref(),
+  rules = ref({}),
+  filterFormData: any = ref({
+    CurPage: +import.meta.env.VITE_CUR_PAGE,
+    PageSize: +import.meta.env.VITE_PAGE_SIZE,
+  }),
+  filterFormType = computed(() => props.filterFormType),
+  isCreateMode = computed(() => pageMode.value === "create"),
+  v$ = useVuelidate(rules, formData);
 let tableContent = computed(() =>
   Object.assign({ tHeaders }, { tColumns }, { tData: data.value })
 );
@@ -86,7 +87,7 @@ function setFormData(index: number) {
 
   console.log(formData.value);
 }
-const v$ = useVuelidate(rules, formData);
+
 async function onSave() {
   v$.value.$validate();
   if (v$.value.$error) {
@@ -165,6 +166,9 @@ provide("pageHeader", {
   restFilterFormData,
   clearFilter,
   filterForm,
+});
+provide("pageTitle", {
+  title: props.title,
 });
 provide("pageContent", {
   filterFormData,

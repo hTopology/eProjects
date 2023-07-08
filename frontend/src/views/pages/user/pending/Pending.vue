@@ -2,7 +2,7 @@
 import PageHeader from "@/views/components/crud/PageHeader.vue";
 import { ref } from "vue";
 import { provide } from "vue";
-import RecivedOrderItems from "./RecivedOrderItems.vue";
+import PendingItems from "./PendingItems.vue";
 provide("pageTitle", "supply orders");
 const data = ref({}) as any;
 data.value.items = [
@@ -57,7 +57,7 @@ function save() {
     </div>
   </PageHeader>
   <div class="px-10">
-    <RecivedOrderItems :data="data" />
+    <PendingItems :data="data" />
     <button @click="save">save</button>
   </div>
 </template>

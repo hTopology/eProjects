@@ -1,11 +1,6 @@
 <script setup lang="ts">
 import CloseIcon from "@/views/components/icons/CloseIcon.vue";
-// enum EnumDialogWidth {
-//   sm = "max-w-sm",
-//   md = "max-w-md",
-// }
 defineProps({
-  // sm md lg xl 2xl
   dialogWidth: { type: String, default: "max-w-2xl" },
   onSave: {
     type: Function,

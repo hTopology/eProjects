@@ -7,7 +7,6 @@ import ProjectFilterForm from "./ProjectFilterForm.vue";
 const tHeaders = ["id", "name"];
 const tColumns = ["PROJECT_ID", "PROJECT"];
 const required = ["PROJECT"];
-provide("pageTitle", "projects");
 provide("baseSearch", [
   {
     key: "id",
@@ -22,6 +21,7 @@ provide("baseSearch", [
 
 <template>
   <CrudPageLayout
+    title="projects"
     :filterForm="ProjectFilterForm"
     filterFormType="form"
     entityId="projects"

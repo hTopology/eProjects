@@ -11,6 +11,7 @@ import MembersTypes from "@/views/pages/admin/memberType/MemberType.vue";
 
 import SupplyOrder from "@/views/pages/user/supplyOrder/SupplyOrder.vue"
 import RecivedOrder from "@/views/pages/user/recivedOrder/RecivedOrder.vue"
+import Pending from "@/views/pages/user/pending/Pending.vue"
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -63,6 +64,11 @@ const router = createRouter({
           path: "/recivedOrder",
           name: "recivedOrder",
           component: RecivedOrder,
+        },
+        {
+          path: "/pending",
+          name: "pending",
+          component: Pending,
         },
       ],
     },

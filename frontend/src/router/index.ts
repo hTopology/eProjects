@@ -10,6 +10,7 @@ import ProjectsOfYear from "@/views/pages/admin/projectsOfYear/ProjectsOfYear.vu
 import MembersTypes from "@/views/pages/admin/memberType/MemberType.vue";
 
 import SupplyOrder from "@/views/pages/user/supplyOrder/SupplyOrder.vue";
+import SODetails from "@/views/pages/user/supplyOrderDetails/SODetails.vue";
 import RecivedOrder from "@/views/pages/user/recivedOrder/RecivedOrder.vue";
 import Pending from "@/views/pages/user/pending/Pending.vue";
 const router = createRouter({
@@ -59,6 +60,11 @@ const router = createRouter({
           path: "/supplyOrder",
           name: "supplyOrder",
           component: SupplyOrder,
+        },
+        {
+          path: "/supplyOrder_details",
+          name: "supplyOrderDetails",
+          component: SODetails,
         },
         {
           path: "/recivedOrder",

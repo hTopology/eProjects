@@ -1,6 +1,6 @@
 const statcItemsInMenu = [{ routerName: "profile", name: "profile" }];
 import HomeIcon from "@/views/components/icons/HomeIcon.vue";
-import SettingIcon from "@/views/components/icons/SettingIcon.vue"
+import SettingIcon from "@/views/components/icons/SettingIcon.vue";
 
 const mRequest = { link: "mRequests", name: "material_requests" };
 const po = { link: "purchaseOrders", name: "purchase orders" };
@@ -11,6 +11,7 @@ const dynamicItemInMenu = {
     { to: "/supplyOrder", linkName: "supply orders", icon: HomeIcon },
     { to: "/recivedOrder", linkName: "recived orders", icon: HomeIcon },
     { to: "/pending", linkName: "pending orders", icon: HomeIcon },
+    { to: "/supplyOrder_details", linkName: "order detils", icon: HomeIcon },
     {
       linkName: "setting",
       icon: SettingIcon,

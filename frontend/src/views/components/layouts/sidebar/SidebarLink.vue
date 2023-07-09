@@ -25,7 +25,7 @@ const route = useRoute();
         class="fill-sidebarText w-6"
         :class="{ 'fill-white': route.path == link.to }"
       />
-      <span v-if="showMenu">{{ link.linkName }}</span>
+      <span :class="{ 'md:hidden ': !showMenu }">{{ link.linkName }}</span>
     </RouterLink>
   </li>
 </template>

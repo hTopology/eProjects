@@ -14,7 +14,7 @@ import NavbarAction from "./NavbarAction.vue";
           @click="$emit('toggleMenu')"
         /> -->
         <RouterLink to="/" class="flex">
-          <img src="/image/lgLogo.svg" alt="logo image" />
+          <img src="/image/lgLogo.svg" class="max-md:w-3/4" alt="logo image" />
         </RouterLink>
       </div>
       <NavbarAction />

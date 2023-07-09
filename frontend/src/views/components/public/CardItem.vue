@@ -2,7 +2,8 @@
 import CardItemDropdown from "@/views/components/public/CardItemDropdown.vue";
 import CardItemInputQty from "@/views/components/public/CardItemInputQty.vue";
 import CardItemText from "@/views/components/public/CardItemText.vue";
-import CardItem from "@/views/components/public/CardItem.vue";
+import ICard from "@/views/components/public/ICard.vue";
+import DeleteIcon from "@/views/components/icons/DeleteIcon.vue";
 
 const props = defineProps({
   data: {
@@ -15,18 +16,12 @@ function deleteItem(index: number) {
 }
 </script>
 <template>
-  <CardItem :data="data">
+  <ICard :data="data">
     <template v-slot:items="{ item }">
-      <CardItemText headText="item" :text="item.ITEM" />
-      <CardItemInputQty headText="quantity" v-model="item.QTY" />
-      <CardItemInputQty headText="quantity" v-model="item.QTY" />
-      <CardItemDropdown
-        v-model="item.REMARK_ID"
-        :options="item.ITEMS_REMARKS"
-        text="REMARK"
-        value="REMARK_ID"
-        headText="remarks"
-      />
+      <slot name="items" :item="item"></slot>
     </template>
-  </CardItem>
+    <template v-slot:actions="{ index }">
+      <button @click="deleteItem(index)"><DeleteIcon /></button>
+    </template>
+  </ICard>
 </template>

@@ -38,11 +38,10 @@ const activeLink = computed(() => {
         class="fill-sidebarText w-6"
         :class="{ 'fill-white': activeLink }"
       />
-      <span v-if="showMenu">{{ link.linkName }}</span>
+      <span :class="{ 'md:hidden ': !showMenu }">{{ link.linkName }}</span>
       <ArrowDownIcon
-        v-if="showMenu"
         class="fill-primary w-3 h-3 ml-auto"
-        :class="{ 'fill-white': activeLink }"
+        :class="[{ 'fill-white': activeLink }, { 'md:hidden ': !showMenu }]"
       />
     </button>
     <div class="ml-6 border-l-2 border-primary200">

@@ -22,9 +22,15 @@ function logout() {
 
 <template>
   <aside
-    :class="[{ 'w-60': showMenu }, { 'w-0 md:w-auto': !showMenu }]"
-    class="md:block transition-all bg-white"
-    v-once
+    :class="[
+      {
+        'w-60 max-md:-translate-x-full ': showMenu,
+      },
+      {
+        'md:w-auto z-50  max-md:translate-x-0 max-md:w-60 ': !showMenu,
+      },
+    ]"
+    class="md:block max-md:absolute max-md:top-0 max-md:left-0 max-md:h-full bg-white transition-all"
   >
     <div class="flex flex-col pb-8 h-full">
       <UserInfo :showMenu="showMenu" />
@@ -44,7 +50,7 @@ function logout() {
         class="flex items-center rounded-lg gap-2 py-2 px-4 mx-4 text-sidebarText text-lg font-bold capitalize"
       >
         <LogoutIcon class="fill-sidebarText" />
-        <span v-if="showMenu">{{ $t("logout") }}</span>
+        <span :class="{ 'md:hidden ': !showMenu }">{{ $t("logout") }}</span>
       </button>
     </div>
   </aside>

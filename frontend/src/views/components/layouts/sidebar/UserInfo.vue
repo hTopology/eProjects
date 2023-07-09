@@ -17,7 +17,7 @@ const toggleShowSidebar: any = inject("toggleShowSidebar");
       <div class="w-10 h-10 rounded-full overflow-hidden">
         <img src="/image/user.png" alt="" />
       </div>
-      <div class="" v-if="showMenu">
+      <div :class="{ 'md:hidden ': !showMenu }">
         <h4 class="capitalize text-title text-sm font-bold">Richard</h4>
         <p class="text-grayText text-xs">9394lay@gmail.com</p>
       </div>

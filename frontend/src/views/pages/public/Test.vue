@@ -4,7 +4,6 @@ import ProjectForm from "@/views/pages/admin/project/ProjectForm.vue";
 
 const tHeaders = ["id", "name ar", "name en"];
 const tColumns = ["UNIT_ID", "UNIT_AR", "UNIT_EN"];
-const required = ["UNIT_AR", "UNIT_EN"];
 </script>
 
 <template>
@@ -16,6 +15,5 @@ const required = ["UNIT_AR", "UNIT_EN"];
     :tHeaders="tHeaders"
     :tColumns="tColumns"
     formPageType="dialog"
-    :requiredControls="required"
   />
 </template>

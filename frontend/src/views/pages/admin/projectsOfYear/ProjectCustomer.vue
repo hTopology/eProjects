@@ -1,13 +1,10 @@
 <script setup lang="ts">
 import { post } from "@/services/crud.service";
-import { useUserStore } from "@/stores/user";
 import CheckBox from "@/views/components/inputs/CheckBox.vue";
 import MainSelect from "@/views/components/inputs/MainSelect.vue";
 import { onMounted } from "vue";
 import { ref } from "vue";
-
-const userStore = useUserStore();
-const props = defineProps({
+defineProps({
   formData: {
     type: Object,
     requried: true,
@@ -19,20 +16,23 @@ const props = defineProps({
 
 const modelValue = defineModel();
 modelValue.value = {};
-const locations = ref();
+const data = ref();
 onMounted(() => {
-  getLocations();
+  getData();
 });
-async function getLocations() {
-  locations.value = await post(`read/customers`);
-  console.log(locations.value);
+async function getData() {
+  data.value = await post(`read/customers`, {
+    CurPage: 1,
+    PageSize: 20,
+  });
+  console.log(data.value);
 }
 </script>
 
 <template>
-  <MainSelect v-model="formData.LOCATION_ID" v-if="locations">
-    <option v-for="location in locations" :value="location.LOCATION_ID">
-      {{ location.LOCATION }}
+  <MainSelect v-model="formData.CUSTOMER_ID" v-if="data">
+    <option v-for="row in data" :value="row.CUSTOMER_ID">
+      {{ row.CUSTOMER }}
     </option>
   </MainSelect>
   <CheckBox lable="is active" v-model="formData.IS_ACTIVE" />

@@ -45,19 +45,14 @@ function save() {
 }
 </script>
 <template>
-  <PageHeader title="supply order">
-    <div class="flex items-center gap-4">
-      <input type="date" class="bg-transparent outline-none" name="" id="" />
-      <select
-        class="bg-primary text-white outline-none py-2 px-4 block rounded-lg"
-      >
-        <option value="">select vendor</option>
-        <option v-for="i in 5" value="i">{{ i }}</option>
-      </select>
-    </div>
-  </PageHeader>
-  <div class="px-10">
+  <!-- class="sticky top-0 bg-background" -->
+  <PageHeader title="pending orders" />
+  <div class="px-10 pb-16">
     <PendingItems :data="data" />
-    <button @click="save">save</button>
+    <PendingItems :data="data" />
+    <PendingItems :data="data" />
+    <PendingItems :data="data" />
+    <PendingItems :data="data" />
+    <PendingItems :data="data" />
   </div>
 </template>

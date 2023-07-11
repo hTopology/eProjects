@@ -3,6 +3,9 @@ import PageHeader from "@/views/components/crud/PageHeader.vue";
 import { ref } from "vue";
 import { provide } from "vue";
 import RecivedOrderItems from "./RecivedOrderItems.vue";
+import FooterAction from "@/views/components/layouts/footer/FooterAction.vue";
+import MainButton from "@/views/components/inputs/MainButton.vue";
+import Commit from "@/views/components/commit/Commit.vue";
 provide("pageTitle", "supply orders");
 const data = ref({}) as any;
 data.value.items = [
@@ -45,19 +48,28 @@ function save() {
 }
 </script>
 <template>
-  <PageHeader title="supply order">
+  <PageHeader title="Recived Order">
     <div class="flex items-center gap-4">
-      <input type="date" class="bg-transparent outline-none" name="" id="" />
       <select
         class="bg-primary text-white outline-none py-2 px-4 block rounded-lg"
       >
         <option value="">select vendor</option>
         <option v-for="i in 5" value="i">{{ i }}</option>
       </select>
+      <select
+        class="border border-primary bg-transparent text-primary outline-none py-2 px-4 block rounded-lg"
+      >
+        <option value="">select vendor</option>
+        <option v-for="i in 5" value="i">{{ i }}</option>
+      </select>
     </div>
   </PageHeader>
-  <div class="px-10">
+  <div class="px-10 pb-16">
     <RecivedOrderItems :data="data" />
-    <button @click="save">save</button>
+    <Commit />
   </div>
+  <FooterAction>
+    <MainButton lable="confirm" class="bg-primary text-white" />
+    <MainButton lable="Save as Draft" class="border-primary text-primary" />
+  </FooterAction>
 </template>

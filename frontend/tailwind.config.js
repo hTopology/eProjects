@@ -11,6 +11,7 @@ module.exports = {
         secodry: "#94A3B8",
         third: "#CBD5E1",
         sidebarText: "#526581",
+        textPrimary:'#161616',
         title: "#09244B",
         grayText: "#8491A5",
         tableRow: "#F1F5F9",

@@ -31,7 +31,7 @@ const addToProject = {
     title: "locations",
     tHeaders: ["location"],
     tColumns: ["LOCATION"],
-    pKey: ["FISCAL_YEAR_ID", "PROJECT_ID", "LOCATION"],
+    pKey: ["FISCAL_YEAR_ID", "PROJECT_ID", "LOCATION_ID"],
     entityId: "projects_locations",
   },
   customers: {
@@ -39,7 +39,7 @@ const addToProject = {
     title: "customers",
     tHeaders: ["customer"],
     tColumns: ["CUSTOMER"],
-    pKey: ["FISCAL_YEAR_ID", "PROJECT_ID", "LOCATION"],
+    pKey: ["FISCAL_YEAR_ID", "PROJECT_ID", "CUSTOMER_ID"],
     entityId: "projects_customers",
   },
   members: {
@@ -47,7 +47,7 @@ const addToProject = {
     title: "members",
     tHeaders: ["member", "member type"],
     tColumns: ["MEMBER", "MEMBER_TYPE"],
-    pKey: ["FISCAL_YEAR_ID", "PROJECT_ID", "LOCATION"],
+    pKey: ["FISCAL_YEAR_ID", "PROJECT_ID", "MEMBER_ID"],
     entityId: "projects_members",
   },
 } as any;
@@ -89,9 +89,6 @@ function onClose() {
     :onClose="onClose"
     :form="addMode"
     :pKey="['FISCAL_YEAR_ID', 'PROJECT_ID', 'LOCATION']"
-    :extendedFormData="{
-      FISCAL_YEAR_ID: selectedProject?.FISCAL_YEAR_ID,
-      PROJECT_ID: selectedProject?.PROJECT_ID,
-    }"
+    :extendedData="selectedProject"
   />
 </template>

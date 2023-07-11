@@ -9,7 +9,7 @@ defineProps({
 
 <template>
   <div>
-    <div class="transition-all">
+    <div class="transition-all h-full">
       <RouterView />
     </div>
   </div>

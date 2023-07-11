@@ -19,7 +19,7 @@ const props = defineProps({
 });
 </script>
 <template>
-  <div class="relative">
+  <div class="relative border border-gray-950">
     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
       <div class="p-6 space-y-6">
         <slot name="formContent"></slot>

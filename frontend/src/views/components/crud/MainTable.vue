@@ -37,9 +37,9 @@ function confirmDelte(index: number) {
 <template>
   <div class="relative overflow-x-auto">
     <table
-      class="w-full text-sm text-left text-gray-500 border-spacing-y-2 border-separate"
+      class="w-full text-sm text-left text-textPrimary border-spacing-y-2 border-separate"
     >
-      <thead class="text-xs text-gray-700 uppercase bg-white">
+      <thead class="text-xs uppercase bg-white">
         <tr class="capitalize rounded-3xl">
           <th
             class="px-6 py-4"
@@ -59,7 +59,7 @@ function confirmDelte(index: number) {
             :key="(lable as string)"
             class="px-6 py-3"
             :class="[
-              { 'text-blue-600 cursor-pointer': lable.action },
+              { 'text-blue-600 cursor-pointer underline': lable.action },
               { 'bg-tableRow': index % 2 === 0 },
               { 'bg-white': index % 2 != 0 },
               { 'rounded-tl-xl rounded-bl-xl': tedIndex == 0 },

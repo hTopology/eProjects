@@ -44,7 +44,7 @@ const activeLink = computed(() => {
         :class="[{ 'fill-white': activeLink }, { 'md:hidden ': !showMenu }]"
       />
     </button>
-    <div class="ml-6 border-l-2 border-primary200">
+    <div class="ml-6 border-l-2 border-primary200 mt-2">
       <ul :class="{ hidden: !isLinksShow }">
         <SidebarLink
           class="link text-xs ml-3"

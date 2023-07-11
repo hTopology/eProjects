@@ -36,6 +36,7 @@ const props = defineProps({
     type: Object,
   },
   filterFormType: String,
+  filterFormData: Object,
 });
 const formData = ref({}) as any,
   data = ref(),
@@ -61,7 +62,7 @@ let pageMode = ref("create");
 onMounted(() => {
   onRead();
 });
-
+// Object.assign(filterFormData.value, props.filterFormData);
 function onOpenForm(mode: string, index: number = -1) {
   pageMode.value = mode;
   setFormData(index);
@@ -81,7 +82,7 @@ function setFormData(index: number) {
     : Object.assign(
         formData.value,
         data.value[index],
-        { oPKey: getPKeys(index) },
+        { oPKey: getPKeys(data.value[index]) },
         props.extendedFormData
       );
 
@@ -98,15 +99,19 @@ async function onSave() {
 }
 async function onCreate() {
   const pKey = await post(`create/${props.entityId}`, formData.value);
-  Object.assign(filterFormData.value, { [props.pKey[0]]: pKey[0].PK });
-  console.log(filterFormData.value);
+  if (pKey[0].PK == 0)
+    Object.assign(filterFormData.value, getPKeys(formData.value));
+  else Object.assign(filterFormData.value, { [props.pKey[0]]: pKey[0].PK });
   curPage.value = filterFormData.value.CurPage;
   filterFormData.value.CurPage = 1;
   await onRead();
 }
 async function onRead() {
   isLoading.value = true;
-  data.value = await post(`read/${props.entityId}`, filterFormData.value);
+  data.value = await post(`read/${props.entityId}`, {
+    ...filterFormData.value,
+    ...props.filterFormData,
+  });
   isLoading.value = false;
 }
 async function onUpdate() {
@@ -115,7 +120,7 @@ async function onUpdate() {
   onRead();
 }
 async function onDelete(index: number) {
-  await remove(`delete/${props.entityId}`, getPKeys(index));
+  await remove(`delete/${props.entityId}`, getPKeys(data.value[index]));
   data.value.splice(index, 1);
   if (!data.value.length) {
     if (filterFormData.value.CurPage > 1) {
@@ -127,11 +132,12 @@ async function onDelete(index: number) {
     //we can calc cur page without onRead
   }
 }
-function getPKeys(index: number) {
+function getPKeys(data: any) {
   const pKey: any = {};
-  props.pKey.forEach((el: string) => (pKey[el] = data.value[index][el]));
+  props.pKey.forEach((el: string) => (pKey[el] = data[el]));
   return pKey;
 }
+
 function restVariablesToDefaultValue() {
   formData.value = {};
   pageMode.value = "create";

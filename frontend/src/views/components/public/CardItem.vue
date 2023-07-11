@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import CardItemDropdown from "@/views/components/public/CardItemDropdown.vue";
-import CardItemInputQty from "@/views/components/public/CardItemInputQty.vue";
-import CardItemText from "@/views/components/public/CardItemText.vue";
+import CardItemAction from "@/views/components/public/CardItemAction.vue";
 import ICard from "@/views/components/public/ICard.vue";
 import DeleteIcon from "@/views/components/icons/DeleteIcon.vue";
 
@@ -17,11 +15,13 @@ function deleteItem(index: number) {
 </script>
 <template>
   <ICard :data="data">
-    <template v-slot:items="{ item }">
+    <template v-slot:items="{ item, index }">
       <slot name="items" :item="item"></slot>
-    </template>
-    <template v-slot:actions="{ index }">
-      <button @click="deleteItem(index)"><DeleteIcon /></button>
+      <CardItemAction>
+        <button @click="deleteItem(index)">
+          <DeleteIcon class="w-4 h-4" />
+        </button>
+      </CardItemAction>
     </template>
   </ICard>
 </template>

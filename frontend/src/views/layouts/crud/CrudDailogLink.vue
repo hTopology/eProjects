@@ -6,7 +6,7 @@ import CrudPageLayout from "@/views/layouts/crud/CrudPageLayout.vue";
 const props = defineProps({
   lable: String,
   extendedData: Object,
-  form: { type: Object, required: true },
+  selectedFormOptions: { type: Object, required: true },
   onClose: {
     type: Function,
     required: true,
@@ -17,27 +17,21 @@ const props = defineProps({
 <template>
   <Teleport to="#modal">
     <CrudDialogLayout
-      :title="props.form.title + ' of: ' + extendedData?.PROJECT"
+      :title="selectedFormOptions.title"
       :onClose="onClose"
       dialogWidth="max-w-5xl"
     >
       <template #formContent>
         <CrudPageLayout
-          filterFormType="form"
           formPageType="newPage"
-          :entityId="form.entityId"
-          :pKey="form.pKey"
-          :form="form.form"
-          :tHeaders="form.tHeaders"
-          :tColumns="form.tColumns"
-          :extendedFormData="{
-            FISCAL_YEAR_ID: extendedData?.FISCAL_YEAR_ID,
-            PROJECT_ID: extendedData?.PROJECT_ID,
-          }"
-          :filterFormData="{
-            FISCAL_YEAR_ID: extendedData?.FISCAL_YEAR_ID,
-            PROJECT_ID: extendedData?.PROJECT_ID,
-          }"
+          :entityId="selectedFormOptions.entityId"
+          :pKey="selectedFormOptions.pKey"
+          :form="selectedFormOptions.form"
+          :tHeaders="selectedFormOptions.tHeaders"
+          :tColumns="selectedFormOptions.tColumns"
+          :extendedFormData="extendedData"
+          :filterData="extendedData"
+          :baseSearch="selectedFormOptions.baseSearch"
         />
       </template>
     </CrudDialogLayout>

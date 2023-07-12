@@ -10,38 +10,42 @@ const props = defineProps({
     requried: true,
     default: {},
   },
-  isEmpty: Boolean,
+  extendedFormData: {
+    type: Object,
+    requried: true,
+  },
   v$: { type: Object, required: true },
 });
 
 const modelValue = defineModel();
 modelValue.value = {};
+const locations = ref();
 const members = ref();
-const membersTypes = ref();
 onMounted(async () => {
-  members.value = await getDropdownData("members");
-  membersTypes.value = await getDropdownData("members_types");
+  locations.value = await getDropdownData("projects_locations");
+  members.value = await getDropdownData("projects_members");
 });
 function getDropdownData(entityId: string) {
-  return post(`read/${entityId}`, { IS_ACTIVE: 1 });
+  return post(`read/${entityId}`, {
+    CurPage: 1,
+    PageSize: 20,
+    FISCAL_YEAR_ID: props.extendedFormData?.FISCAL_YEAR_ID,
+    PROJECT_ID: props.extendedFormData?.PROJECT_ID,
+    IS_ACTIVE: 1,
+  });
 }
 </script>
 
 <template>
-  <MainSelect lable="members" v-model="formData.MEMBER_ID" v-if="members">
-    <option v-for="option in members" :value="option.MEMBER_ID">
-      {{ option.MEMBER }}
+  <MainSelect v-model="formData.LOCATION_ID" v-if="locations">
+    <option v-for="row in locations" :value="row.LOCATION_ID">
+      {{ row.LOCATION }}
     </option>
   </MainSelect>
-  <MainSelect
-    lable="members types"
-    v-model="formData.MEMBER_TYPE_ID"
-    v-if="membersTypes"
-  >
-    <option v-for="option in membersTypes" :value="option.MEMBER_TYPE_ID">
-      {{ option.MEMBER_TYPE }}
+  <MainSelect v-model="formData.MEMBER_ID">
+    <option v-if="members" v-for="row in members" :value="row.MEMBER_ID">
+      {{ row.MEMBER }}
     </option>
   </MainSelect>
-  <CheckBox lable="is current" v-model="formData.IS_CURRENT" />
   <CheckBox lable="is active" v-model="formData.IS_ACTIVE" />
 </template>

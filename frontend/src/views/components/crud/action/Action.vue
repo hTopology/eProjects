@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import CreateBtn from "./CreateBtn.vue";
-import HeaderFilter from "../filter/FilterHeader.vue";
+import FilterHeader from "../filter/FilterHeader.vue";
 import FilterBtn from "./FilterBtn.vue";
 import { inject } from "vue";
 import ClearFilter from "@/views/components/icons/ClearFilter.vue";
 import MainBtn from "@/views/components/inputs/MainBtn.vue";
 import { computed } from "vue";
 
-const { onOpenForm, clearFilter, filterFormData }: any = inject("pageHeader");
+const { onOpenForm, clearFilter, filterFormData, filterForm }: any =
+  inject("pageHeader");
 
 const isShowFilter = computed(() => {
   let count = 0;
@@ -18,10 +19,12 @@ const isShowFilter = computed(() => {
   });
   return count > 2;
 });
+const baseSearchOptions: any = inject("baseSearch");
 </script>
 <template>
   <div class="flex items-center gap-4">
     <CreateBtn @click="onOpenForm('create')" />
+
     <MainBtn
       @click="clearFilter && clearFilter()"
       btnText="clear filter"
@@ -29,8 +32,7 @@ const isShowFilter = computed(() => {
       :icon="ClearFilter"
       v-if="isShowFilter"
     />
-
-    <HeaderFilter />
-    <FilterBtn />
+    <FilterHeader v-if="baseSearchOptions" />
+    <FilterBtn v-if="filterForm" />
   </div>
 </template>

@@ -7,57 +7,190 @@ import ProjectLocation from "./ProjectLocation.vue";
 import ProjectCustomer from "./ProjectCustomer.vue";
 import ProjectMembers from "./ProjectMembers.vue";
 import CrudDailogLink from "@/views/layouts/crud/CrudDailogLink.vue";
-const tHeaders = ["id", "name", "locations", "customers", "members"];
-const locationFormData = ref();
+import ProjectLocationCustomer from "./ProjectLocationCustomer.vue";
+import ProjectLocationMember from "./ProjectLocationMember.vue";
+import { computed } from "vue";
+import ProjectLocationDonors from "./ProjectLocationDonors.vue";
+import ProjectLocationItems from "./ProjectLocationItems.vue";
+import ProjectItems from "./ProjectItem.vue";
+import ProjectDonor from "./ProjectDonor.vue";
+// const table = [
+//   {
+//     th: "id",
+//     td: "PROJECT_ID",
+//   },
+//   {
+//     th: "name",
+//     td: "PROJECT",
+//   },
+//   {
+//     th: "locations",
+//     td: "locations",
+//     action: openForm,
+//   },
+// ];
+const tHeaders = [
+  "id",
+  "name",
+  "locations",
+  "customers",
+  "members",
+  "items",
+  "donors",
+  "location customers",
+  "location Members",
+  "location items",
+  "location donors",
+];
 const tColumns = [
   "PROJECT_ID",
   "PROJECT",
   {
     name: "locations",
-    action: addLocations,
+    action: openForm,
   },
   {
     name: "customers",
-    action: addLocations,
+    action: openForm,
   },
   {
     name: "members",
-    action: addLocations,
+    action: openForm,
+  },
+  {
+    name: "items",
+    action: openForm,
+  },
+  {
+    name: "donors",
+    action: openForm,
+  },
+  {
+    name: "locationCustomers",
+    action: openForm,
+  },
+  {
+    name: "locationMembers",
+    action: openForm,
+  },
+  {
+    name: "locationItems",
+    action: openForm,
+  },
+  {
+    name: "locationDonors",
+    action: openForm,
   },
 ];
-const addToProject = {
+const selectedProject = ref({}) as any;
+const selectedFormOptions = ref();
+const extendedData = ref();
+const title = computed(() => selectedProject.value.PROJECT);
+const addFormsOptions = {
   locations: {
     form: ProjectLocation,
-    title: "locations",
+    title: "locations" + " of: " + title.value,
     tHeaders: ["location"],
     tColumns: ["LOCATION"],
     pKey: ["FISCAL_YEAR_ID", "PROJECT_ID", "LOCATION_ID"],
     entityId: "projects_locations",
+    baseSearch: [{ key: "location", value: "LOCATION" }],
   },
   customers: {
     form: ProjectCustomer,
-    title: "customers",
+    title: "customers" + " of: ",
     tHeaders: ["customer"],
     tColumns: ["CUSTOMER"],
     pKey: ["FISCAL_YEAR_ID", "PROJECT_ID", "CUSTOMER_ID"],
     entityId: "projects_customers",
+    baseSearch: [{ key: "customers", value: "CUSTOMER" }],
   },
   members: {
     form: ProjectMembers,
-    title: "members",
+    title: "members" + " of: ",
     tHeaders: ["member", "member type"],
     tColumns: ["MEMBER", "MEMBER_TYPE"],
     pKey: ["FISCAL_YEAR_ID", "PROJECT_ID", "MEMBER_ID"],
     entityId: "projects_members",
+    baseSearch: [{ key: "member", value: "MEMBER" }],
+  },
+  items: {
+    form: ProjectItems,
+    title: "members" + " of: ",
+    tHeaders: ["item", "group"],
+    tColumns: ["ITEM", "GROUP_DESC"],
+    pKey: ["FISCAL_YEAR_ID", "PROJECT_ID", "ITEM_ID", "GROUP_ID"],
+    entityId: "projects_items",
+    baseSearch: [{ key: "item", value: "ITEM" }],
+  },
+  donors: {
+    form: ProjectDonor,
+    title: "donors" + " of: ",
+    tHeaders: ["donors"],
+    tColumns: ["DONOR"],
+    pKey: ["FISCAL_YEAR_ID", "PROJECT_ID", "DONOR_ID"],
+    entityId: "projects_donors",
+    baseSearch: [{ key: "donor", value: "DONOR" }],
+  },
+  locationCustomers: {
+    form: ProjectLocationCustomer,
+    title: "location Customers" + " of: ",
+    tHeaders: ["location", "customer", "is active"],
+    tColumns: ["LOCATION", "CUSTOMER", "IS_ACTIVE"],
+    pKey: ["FISCAL_YEAR_ID", "PROJECT_ID", "LOCATION_ID", "CUSTOMER_ID"],
+    entityId: "locations_customers",
+    baseSearch: [
+      { key: "location", value: "LOCATION" },
+      { key: "customer", value: "CUSTOMER" },
+    ],
+  },
+  locationMembers: {
+    form: ProjectLocationMember,
+    title: "location members" + " of: ",
+    tHeaders: ["location", "members", "is active"],
+    tColumns: ["LOCATION", "MEMBER", "IS_ACTIVE"],
+    pKey: ["FISCAL_YEAR_ID", "PROJECT_ID", "LOCATION_ID", "MEMBER_ID"],
+    entityId: "locations_members",
+    baseSearch: [
+      { key: "location", value: "LOCATION" },
+      { key: "member", value: "MEMBER" },
+    ],
+  },
+  locationItems: {
+    form: ProjectLocationItems,
+    title: "location items" + " of: ",
+    tHeaders: ["location", "items", "is active"],
+    tColumns: ["LOCATION", "ITEM", "IS_ACTIVE"],
+    pKey: ["FISCAL_YEAR_ID", "PROJECT_ID", "LOCATION_ID", "ITEM_ID"],
+    entityId: "locations_item",
+    baseSearch: [
+      { key: "location", value: "LOCATION" },
+      { key: "item", value: "ITEM" },
+    ],
+  },
+  locationDonors: {
+    form: ProjectLocationDonors,
+    title: "location donors" + " of: ",
+    tHeaders: ["location", "donors", "is active"],
+    tColumns: ["LOCATION", "DONOR", "IS_ACTIVE"],
+    pKey: ["FISCAL_YEAR_ID", "PROJECT_ID", "LOCATION_ID", "DONOR_ID"],
+    entityId: "locations_donors",
+    baseSearch: [
+      { key: "location", value: "LOCATION" },
+      { key: "donor", value: "DONOR" },
+    ],
   },
 } as any;
-const selectedProject = ref();
-const addMode = ref();
-function addLocations(data: any, key: string) {
+
+function openForm(data: any, key: string) {
   selectedProject.value = data;
-  addMode.value = addToProject[key];
+  extendedData.value = {
+    FISCAL_YEAR_ID: selectedProject.value.FISCAL_YEAR_ID,
+    PROJECT_ID: selectedProject.value.PROJECT_ID,
+  };
+  selectedFormOptions.value = addFormsOptions[key];
 }
-provide("baseSearch", [
+const baseSearch = [
   {
     key: "id",
     value: "PROJECT_ID",
@@ -66,9 +199,9 @@ provide("baseSearch", [
     key: "project",
     value: "PROJECT",
   },
-]);
+];
 function onClose() {
-  addMode.value = null;
+  selectedFormOptions.value = null;
 }
 </script>
 
@@ -83,12 +216,12 @@ function onClose() {
     :tHeaders="tHeaders"
     :tColumns="tColumns"
     formPageType="dialog"
+    :baseSearch="baseSearch"
   />
   <CrudDailogLink
-    v-if="addMode"
+    v-if="selectedFormOptions"
     :onClose="onClose"
-    :form="addMode"
-    :pKey="['FISCAL_YEAR_ID', 'PROJECT_ID', 'LOCATION']"
-    :extendedData="selectedProject"
+    :selectedFormOptions="selectedFormOptions"
+    :extendedData="extendedData"
   />
 </template>

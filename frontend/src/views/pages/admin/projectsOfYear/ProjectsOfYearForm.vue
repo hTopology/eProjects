@@ -20,13 +20,12 @@ const props = defineProps({
 const modelValue = defineModel();
 modelValue.value = {};
 const projects = ref();
-onMounted(() => {
-  getProjects();
+onMounted(async () => {
+  projects.value = await getDropdownData();
   props.formData.FISCAL_YEAR_ID = userStore.getUser().FISCAL_YEAR_ID;
 });
-async function getProjects() {
-  projects.value = await post(`read/projects`, {});
-  console.log(projects.value);
+function getDropdownData() {
+  return post(`read/projects`, { IS_ACTIVE: 1 });
 }
 </script>
 

@@ -16,22 +16,19 @@ defineProps({
 
 const modelValue = defineModel();
 modelValue.value = {};
-const data = ref();
+const donors = ref();
 onMounted(async () => {
-  data.value = await getDropdownData();
+  donors.value = await getDropdownData();
 });
 function getDropdownData() {
-  return post(`read/customers`, {
-    CurPage: 1,
-    PageSize: 20,
-  });
+  return post(`read/donors`, { IS_ACTIVE: 1 });
 }
 </script>
 
 <template>
-  <MainSelect v-model="formData.CUSTOMER_ID" v-if="data">
-    <option v-for="row in data" :value="row.CUSTOMER_ID">
-      {{ row.CUSTOMER }}
+  <MainSelect v-model="formData.DONOR_ID" v-if="donors">
+    <option v-for="row in donors" :value="row.DONOR_ID">
+      {{ row.DONOR }}
     </option>
   </MainSelect>
   <CheckBox lable="is active" v-model="formData.IS_ACTIVE" />

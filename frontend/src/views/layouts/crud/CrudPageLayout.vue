@@ -36,7 +36,8 @@ const props = defineProps({
     type: Object,
   },
   filterFormType: String,
-  filterFormData: Object,
+  filterData: Object,
+  baseSearch: Object,
 });
 const formData = ref({}) as any,
   data = ref(),
@@ -62,7 +63,6 @@ let pageMode = ref("create");
 onMounted(() => {
   onRead();
 });
-// Object.assign(filterFormData.value, props.filterFormData);
 function onOpenForm(mode: string, index: number = -1) {
   pageMode.value = mode;
   setFormData(index);
@@ -110,7 +110,7 @@ async function onRead() {
   isLoading.value = true;
   data.value = await post(`read/${props.entityId}`, {
     ...filterFormData.value,
-    ...props.filterFormData,
+    ...props.filterData,
   });
   isLoading.value = false;
 }
@@ -171,7 +171,7 @@ provide("pageHeader", {
   filterFormData,
   restFilterFormData,
   clearFilter,
-  filterForm,
+  filterForm: props.filterForm,
 });
 provide("pageTitle", {
   title: props.title,
@@ -189,6 +189,7 @@ provide("pageContent", {
   filterFormType,
   toggleFilterForm,
 });
+provide("baseSearch", props.baseSearch);
 </script>
 
 <template>
@@ -200,7 +201,13 @@ provide("pageContent", {
       :onClose="restVariablesToDefaultValue"
     >
       <template #formContent>
-        <component :is="form" :formData="formData" v-model="rules" :v$="v$" />
+        <component
+          :is="form"
+          :formData="formData"
+          :extendedFormData="extendedFormData"
+          v-model="rules"
+          :v$="v$"
+        />
       </template>
     </component>
   </ICrudPageLayout>

@@ -39,7 +39,7 @@ function confirmDelte(index: number) {
     <table
       class="w-full text-sm text-left text-textPrimary border-spacing-y-2 border-separate"
     >
-      <thead class="text-xs uppercase bg-white">
+      <thead class="text-xs uppercase bg-primary text-white">
         <tr class="capitalize rounded-3xl">
           <th
             class="px-6 py-4"

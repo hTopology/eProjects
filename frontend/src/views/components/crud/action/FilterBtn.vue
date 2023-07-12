@@ -12,6 +12,4 @@ const { toggleFilterForm }: any = inject("pageHeader");
     <FilterIcon />
     <span>filter</span>
   </button>
-
-  <!-- <FilterMenu :filterForm="filterForm" v-model="showFilterMenu" /> -->
 </template>

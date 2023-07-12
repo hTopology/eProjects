@@ -6,8 +6,8 @@ import { ref, onMounted } from "vue";
 import { post } from "@/services/crud.service";
 import CheckBox from "@/views/components/inputs/CheckBox.vue";
 
-onMounted(() => {
-  getCities();
+onMounted(async () => {
+  cities.value = await getDropdownData("cities");
   if (props.formData.CITY_ID) getZones();
 });
 const props = defineProps({
@@ -27,12 +27,14 @@ modelValue.value = {
   ZONE_ID: { required },
 };
 const cities = ref();
-async function getCities() {
-  cities.value = await post(`read/cities`);
-}
 const zones = ref();
 async function getZones() {
-  zones.value = await post(`read/zones`, { CITY_ID: props.formData.CITY_ID });
+  zones.value = await getDropdownData("zones", {
+    CITY_ID: props.formData.CITY_ID,
+  });
+}
+function getDropdownData(entityId: string, body: any = {}) {
+  return post(`read/${entityId}`, body);
 }
 </script>
 

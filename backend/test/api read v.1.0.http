@@ -89,3 +89,9 @@ POST {{hostname}}/read/members
 
 ### Post projects locations
 POST {{hostname}}/read/members
+
+### Post donors
+POST {{hostname}}/read/locations_customers
+
+### Post items
+POST {{hostname}}/read/items

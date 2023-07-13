@@ -3,11 +3,11 @@ import MainSelect from "@/views/components/inputs/MainSelect.vue";
 import MainInput from "@/views/components/inputs/MainInput.vue";
 import { required, helpers, email } from "@vuelidate/validators";
 import { ref, onMounted } from "vue";
-import { post } from "@/services/crud.service";
 import CheckBox from "@/views/components/inputs/CheckBox.vue";
+import { readData } from "@/middleware/script";
 
 onMounted(async () => {
-  cities.value = await getDropdownData("cities");
+  cities.value = await readData("cities");
   if (props.formData.CITY_ID) getZones();
 });
 const props = defineProps({
@@ -29,12 +29,9 @@ modelValue.value = {
 const cities = ref();
 const zones = ref();
 async function getZones() {
-  zones.value = await getDropdownData("zones", {
+  zones.value = await readData("zones", {
     CITY_ID: props.formData.CITY_ID,
   });
-}
-function getDropdownData(entityId: string, body: any = {}) {
-  return post(`read/${entityId}`, body);
 }
 </script>
 

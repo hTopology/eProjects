@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { computed, onMounted, provide, ref, shallowRef } from "vue";
+import { computed, onMounted, provide, ref, shallowRef, onUpdated } from "vue";
 import ICrudPageLayout from "@/views/layouts/crud/ICrudPageLayout.vue";
 import CrudDialogLayout from "@/views/layouts/crud/CrudDialogLayout.vue";
 import CurdCurrentLayout from "@/views/layouts/crud/CurdCurrentLayout.vue";
 import { post, put, remove } from "@/services/crud.service";
 import { useVuelidate } from "@vuelidate/core";
+import { watch } from "vue";
 
 const props = defineProps({
   title: String,
@@ -38,11 +39,10 @@ const props = defineProps({
   filterFormType: String,
   filterData: Object,
   baseSearch: Object,
+  openForm: Function,
 });
 const formData = ref({}) as any,
   data = ref(),
-  tHeaders = props.tHeaders,
-  tColumns = props.tColumns,
   dynamicComponent = shallowRef(),
   isLoading = ref(false),
   curPage = ref(1),
@@ -57,12 +57,21 @@ const formData = ref({}) as any,
   isCreateMode = computed(() => pageMode.value === "create"),
   v$ = useVuelidate(rules, formData);
 let tableContent = computed(() =>
-  Object.assign({ tHeaders }, { tColumns }, { tData: data.value })
+  Object.assign(
+    { tHeaders: props.tHeaders },
+    { tColumns: props.tColumns },
+    { tData: data.value }
+  )
 );
 let pageMode = ref("create");
 onMounted(() => {
   onRead();
 });
+const entityId = computed(() => props.entityId);
+watch(entityId, () => {
+  onRead();
+});
+
 function onOpenForm(mode: string, index: number = -1) {
   pageMode.value = mode;
   setFormData(index);
@@ -188,12 +197,17 @@ provide("pageContent", {
   curPage,
   filterFormType,
   toggleFilterForm,
+  openForm: props.openForm,
 });
-provide("baseSearch", props.baseSearch);
+const baseSearch = computed(() => props.baseSearch);
+provide("baseSearch", baseSearch);
 </script>
 
 <template>
-  <ICrudPageLayout :isFullPage="isFullPage">
+  <ICrudPageLayout :isFullPage="isFullPage"
+    ><template #tabs>
+      <slot name="tabs"></slot>
+    </template>
     <component
       :onSave="onSave"
       :title="pageMode + ' ' + props.entityId"

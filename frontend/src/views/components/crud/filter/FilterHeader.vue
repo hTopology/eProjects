@@ -4,9 +4,10 @@ import SearchIcon from "@/views/components/icons/SearchIcon.vue";
 import { watch } from "vue";
 import { ref } from "vue";
 import { inject } from "vue";
+import { computed } from "vue";
 const { filterFormData, onRead, clearFilter }: any = inject("pageHeader");
 const baseSearchOptions: any = inject("baseSearch");
-const searchBy = ref(baseSearchOptions[0].value);
+const searchBy = computed(() => baseSearchOptions.value[0].value);
 function oneInputFilter() {
   filterFormData.value.CurPage = 1;
   onRead();

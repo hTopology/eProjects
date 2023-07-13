@@ -4,8 +4,8 @@ import CrudPageLayout from "@/views/layouts/crud/CrudPageLayout.vue";
 import ProjectForm from "./ProjectForm.vue";
 import ProjectFilterForm from "./ProjectFilterForm.vue";
 
-const tHeaders = ["id", "name"];
-const tColumns = ["PROJECT_ID", "PROJECT"];
+const tHeaders = ["id", "name", "is active"];
+const tColumns = ["PROJECT_ID", "PROJECT", "IS_ACTIVE"];
 const required = ["PROJECT"];
 provide("baseSearch", [
   {

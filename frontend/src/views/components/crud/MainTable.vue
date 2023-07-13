@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import EditIcon from "@/views/components/icons/EditIcon.vue";
 import DeleteButton from "@/views/components/public/DeleteButton.vue";
-import CrudDailogLink from "@/views/layouts/crud/CrudDailogLink.vue";
+import MoreIcon from "../icons/MoreIcon.vue";
 const props = defineProps({
   tableContent: {
     type: Object,
@@ -17,18 +17,9 @@ const props = defineProps({
     required: true,
   },
   extendedColumns: Object,
+  openForm: Function,
 });
 
-const displayDeleteModal = ref(false);
-const selectedIndex = ref(-1);
-// function openDeleteModal(index: number) {
-//   selectedIndex.value = index;
-//   displayDeleteModal.value = true;
-// }
-// function closeDelteModal() {
-//   selectedIndex.value = -1;
-//   displayDeleteModal.value = false;
-// }
 function confirmDelte(index: number) {
   props.onDelete(index);
 }
@@ -39,7 +30,7 @@ function confirmDelte(index: number) {
     <table
       class="w-full text-sm text-left text-textPrimary border-spacing-y-2 border-separate"
     >
-      <thead class="text-xs uppercase bg-primary text-white">
+      <thead class="text-xs uppercase bg-secodry text-white">
         <tr class="capitalize rounded-3xl">
           <th
             class="px-6 py-4"
@@ -77,6 +68,14 @@ function confirmDelte(index: number) {
             ]"
           >
             <div class="flex justify-end gap-6">
+              <button
+                type="button"
+                class=""
+                v-if="openForm"
+                @click="openForm(row)"
+              >
+                <MoreIcon />
+              </button>
               <button
                 @click="onOpenForm('update', index)"
                 type="button"

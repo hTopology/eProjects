@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { post } from "@/services/crud.service";
+import { readData } from "@/middleware/script";
 import CheckBox from "@/views/components/inputs/CheckBox.vue";
 import MainSelect from "@/views/components/inputs/MainSelect.vue";
 import { onMounted } from "vue";
 import { ref } from "vue";
-const props = defineProps({
+defineProps({
   formData: {
     type: Object,
     requried: true,
@@ -18,15 +18,12 @@ const modelValue = defineModel();
 modelValue.value = {};
 const locations = ref();
 onMounted(async () => {
-  locations.value = await getDropdownData();
+  locations.value = await readData("locations");
 });
-function getDropdownData() {
-  return post(`read/locations`, { IS_ACTIVE: 1 });
-}
 </script>
 
 <template>
-  <MainSelect v-model="formData.LOCATION_ID" v-if="locations">
+  <MainSelect defaultOption="locations" v-model="formData.LOCATION_ID">
     <option v-for="location in locations" :value="location.LOCATION_ID">
       {{ location.LOCATION }}
     </option>

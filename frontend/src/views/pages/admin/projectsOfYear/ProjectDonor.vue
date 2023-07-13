@@ -4,6 +4,7 @@ import CheckBox from "@/views/components/inputs/CheckBox.vue";
 import MainSelect from "@/views/components/inputs/MainSelect.vue";
 import { onMounted } from "vue";
 import { ref } from "vue";
+import { readData } from "@/middleware/script";
 defineProps({
   formData: {
     type: Object,
@@ -18,15 +19,12 @@ const modelValue = defineModel();
 modelValue.value = {};
 const donors = ref();
 onMounted(async () => {
-  donors.value = await getDropdownData();
+  donors.value = await readData("donors");
 });
-function getDropdownData() {
-  return post(`read/donors`, { IS_ACTIVE: 1 });
-}
 </script>
 
 <template>
-  <MainSelect v-model="formData.DONOR_ID" v-if="donors">
+  <MainSelect defaultOption="donors" v-model="formData.DONOR_ID">
     <option v-for="row in donors" :value="row.DONOR_ID">
       {{ row.DONOR }}
     </option>

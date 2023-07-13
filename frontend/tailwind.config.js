@@ -8,7 +8,7 @@ module.exports = {
         primary: "#006749",
         primary200: "#CCE1DB",
         neutral900: '#0F172A',
-        secodry: "#94A3B8",
+        secodry: "#41AB34",
         third: "#CBD5E1",
         sidebarText: "#526581",
         textPrimary:'#161616',

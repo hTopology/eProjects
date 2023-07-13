@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { post } from "@/services/crud.service";
+import { readData } from "@/middleware/script";
 import CheckBox from "@/views/components/inputs/CheckBox.vue";
 import MainSelect from "@/views/components/inputs/MainSelect.vue";
 import { onMounted } from "vue";
@@ -27,9 +27,7 @@ onMounted(async () => {
 });
 
 function getDropdownData(entityId: string) {
-  return post(`read/${entityId}`, {
-    CurPage: 1,
-    PageSize: 20,
+  return readData(entityId, {
     FISCAL_YEAR_ID: props.extendedFormData?.FISCAL_YEAR_ID,
     PROJECT_ID: props.extendedFormData?.PROJECT_ID,
     IS_ACTIVE: 1,
@@ -38,14 +36,14 @@ function getDropdownData(entityId: string) {
 </script>
 
 <template>
-  <MainSelect v-model="formData.LOCATION_ID" v-if="locations">
+  <MainSelect defaultOption="location" v-model="formData.LOCATION_ID">
     <option v-for="row in locations" :value="row.LOCATION_ID">
       {{ row.LOCATION }}
     </option>
   </MainSelect>
-  <MainSelect v-model="formData.DONOR">
-    <option v-if="donors" v-for="row in donors" :value="row.DONOR">
-      {{ row.DONONR }}
+  <MainSelect defaultOption="donors" v-model="formData.DONOR_ID">
+    <option v-for="row in donors" :value="row.DONOR_ID">
+      {{ row.DONOR }}
     </option>
   </MainSelect>
   <CheckBox lable="is active" v-model="formData.IS_ACTIVE" />

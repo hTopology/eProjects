@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { readData } from "@/middleware/script";
 import { post } from "@/services/crud.service";
 import CheckBox from "@/views/components/inputs/CheckBox.vue";
 import MainSelect from "@/views/components/inputs/MainSelect.vue";
@@ -19,25 +20,18 @@ modelValue.value = {};
 const members = ref();
 const membersTypes = ref();
 onMounted(async () => {
-  members.value = await getDropdownData("members");
-  membersTypes.value = await getDropdownData("members_types");
+  members.value = await readData("members");
+  membersTypes.value = await readData("members_types");
 });
-function getDropdownData(entityId: string) {
-  return post(`read/${entityId}`, { IS_ACTIVE: 1 });
-}
 </script>
 
 <template>
-  <MainSelect lable="members" v-model="formData.MEMBER_ID" v-if="members">
+  <MainSelect defaultOption="member" v-model="formData.MEMBER_ID">
     <option v-for="option in members" :value="option.MEMBER_ID">
       {{ option.MEMBER }}
     </option>
   </MainSelect>
-  <MainSelect
-    lable="members types"
-    v-model="formData.MEMBER_TYPE_ID"
-    v-if="membersTypes"
-  >
+  <MainSelect defaultOption="member type" v-model="formData.MEMBER_TYPE_ID">
     <option v-for="option in membersTypes" :value="option.MEMBER_TYPE_ID">
       {{ option.MEMBER_TYPE }}
     </option>

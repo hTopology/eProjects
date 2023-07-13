@@ -4,6 +4,7 @@ import CheckBox from "@/views/components/inputs/CheckBox.vue";
 import MainSelect from "@/views/components/inputs/MainSelect.vue";
 import { onMounted } from "vue";
 import { ref } from "vue";
+import { readData } from "@/middleware/script";
 defineProps({
   formData: {
     type: Object,
@@ -18,18 +19,12 @@ const modelValue = defineModel();
 modelValue.value = {};
 const data = ref();
 onMounted(async () => {
-  data.value = await getDropdownData();
+  data.value = await readData("customers");
 });
-function getDropdownData() {
-  return post(`read/customers`, {
-    CurPage: 1,
-    PageSize: 20,
-  });
-}
 </script>
 
 <template>
-  <MainSelect v-model="formData.CUSTOMER_ID" v-if="data">
+  <MainSelect defaultOption="vendor" v-model="formData.CUSTOMER_ID">
     <option v-for="row in data" :value="row.CUSTOMER_ID">
       {{ row.CUSTOMER }}
     </option>

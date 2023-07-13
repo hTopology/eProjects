@@ -19,6 +19,7 @@ const {
   filterFormType,
   curPage,
   toggleFilterForm,
+  openForm,
 }: any = inject("pageContent");
 
 const dynamicFilterComponent = computed(() =>
@@ -50,6 +51,7 @@ function onFilter() {
           :tableContent="tableContent"
           :onOpenForm="onOpenForm"
           :onDelete="onDelete"
+          :openForm="openForm"
         />
         <Pagination
           v-if="tableContent.tData?.[0].RowsCount > pageSize"

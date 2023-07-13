@@ -3,11 +3,9 @@ import { provide, ref } from "vue";
 import CrudPageLayout from "@/views/layouts/crud/CrudPageLayout.vue";
 import LocationForm from "./LocationForm.vue";
 import LocationFilterForm from "./LocationFilterForm.vue";
-import CrudDailogLink from "@/views/layouts/crud/CrudDailogLink.vue";
-import ProjectCustomer from "../projectsOfYear/ProjectCustomer.vue";
 
-const tHeaders = ["id", "location", "city", "zone"];
-const tColumns = ["LOCATION_ID", "LOCATION", "CITY", "ZONE"];
+const tHeaders = ["id", "location", "city", "zone", "is active"];
+const tColumns = ["LOCATION_ID", "LOCATION", "CITY", "ZONE", "IS_ACTIVE"];
 
 const baseSearch = [
   {

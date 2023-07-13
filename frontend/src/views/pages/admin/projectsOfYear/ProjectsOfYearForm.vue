@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { post } from "@/services/crud.service";
+import { readData } from "@/middleware/script";
 import { useUserStore } from "@/stores/user";
 import CheckBox from "@/views/components/inputs/CheckBox.vue";
 import MainSelect from "@/views/components/inputs/MainSelect.vue";
@@ -21,12 +21,9 @@ const modelValue = defineModel();
 modelValue.value = {};
 const projects = ref();
 onMounted(async () => {
-  projects.value = await getDropdownData();
+  projects.value = await readData("projects");
   props.formData.FISCAL_YEAR_ID = userStore.getUser().FISCAL_YEAR_ID;
 });
-function getDropdownData() {
-  return post(`read/projects`, { IS_ACTIVE: 1 });
-}
 </script>
 
 <template>

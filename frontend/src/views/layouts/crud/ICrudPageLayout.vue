@@ -13,6 +13,7 @@ const { title }: any = inject("pageTitle");
   <PageHeader :title="title" v-if="!isFullPage">
     <Action />
   </PageHeader>
+  <slot name="tabs"></slot>
   <PageContent v-if="!isFullPage" />
   <div class="px-10 mt-4" :class="{ 'py-4': isFullPage }">
     <slot></slot>

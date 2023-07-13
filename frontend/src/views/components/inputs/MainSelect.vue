@@ -5,6 +5,7 @@ defineProps({
   lable: {
     type: String,
   },
+  defaultOption: { type: String, default: "" },
   validation: Object,
 });
 </script>
@@ -18,7 +19,9 @@ defineProps({
       :class="[{ 'border-red-600': validation?.$errors.length }]"
       class="bg-transparent outline-none border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
     >
-      <option value="undefined" selected>Choose...</option>
+      <option value="undefined" selected>
+        choose {{ " " + defaultOption }} ...
+      </option>
       <slot></slot>
     </select>
   </div>

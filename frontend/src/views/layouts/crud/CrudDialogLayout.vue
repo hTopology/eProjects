@@ -11,7 +11,6 @@ defineProps({
   },
   title: {
     type: String,
-    required: true,
   },
   hasHeader: {
     type: Boolean,
@@ -29,12 +28,15 @@ defineProps({
     class="fixed bg-black bg-opacity-50 flex items-center justify-center top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-full"
   >
     <div class="relative w-full max-h-full" :class="dialogWidth">
-      <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+      <div class="relative bg-white rounded-lg shadow">
         <div
           v-if="hasHeader"
           class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600"
         >
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+          <h3
+            v-if="title"
+            class="text-xl font-semibold text-gray-900 dark:text-white"
+          >
             {{ title }}
           </h3>
           <button

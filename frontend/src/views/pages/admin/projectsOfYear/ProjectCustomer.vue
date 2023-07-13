@@ -5,7 +5,7 @@ import MainSelect from "@/views/components/inputs/MainSelect.vue";
 import { onMounted } from "vue";
 import { ref } from "vue";
 import { readData } from "@/middleware/script";
-defineProps({
+const props = defineProps({
   formData: {
     type: Object,
     requried: true,
@@ -19,7 +19,13 @@ const modelValue = defineModel();
 modelValue.value = {};
 const data = ref();
 onMounted(async () => {
-  data.value = await readData("customers");
+  if (props.formData.CUSTOMER_ID) {
+    data.value = await readData("customers", {
+      CUSTOMER_ID: props.formData.CUSTOMER_ID,
+    });
+  } else {
+    data.value = await readData("customers");
+  }
 });
 </script>
 

@@ -58,7 +58,7 @@ const addFormsOptions = ref({
     entityId: "projects_locations",
     baseSearch: [{ key: "location", value: "LOCATION" }],
   },
-  customers: {
+  vendors: {
     form: ProjectCustomer,
     tHeaders: ["vendor", "is active"],
     tColumns: ["CUSTOMER", "IS_ACTIVE"],
